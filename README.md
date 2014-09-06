@@ -28,4 +28,4 @@ Create an empty page and add a shortcode `[worker_form]` to it. This will
 allow the logged in users to post new events without using the admin backend.
 Update permalinks after this.
 ####3.3 Change API endpoint
-Set the API endpoint if needed in the `Event Worker Options`.
+Set the new API endpoint if needed in the `Event Worker Options`.
