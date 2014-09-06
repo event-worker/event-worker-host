@@ -1,2 +1,2 @@
-event-worker-host
+Event Worker Host
 =================
