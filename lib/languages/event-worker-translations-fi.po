@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: my-pluginname 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-07 19:03+0200\n"
-"PO-Revision-Date: 2014-09-07 19:05+0200\n"
+"POT-Creation-Date: 2014-09-07 19:19+0200\n"
+"PO-Revision-Date: 2014-09-07 19:19+0200\n"
 "Last-Translator: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language-Team: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language: fi\n"
@@ -255,42 +255,3 @@ msgstr "kategoria"
 #: ../shortcodes/submit-event.php:224
 msgid "location"
 msgstr "sijainti"
-
-#~ msgid "event date"
-#~ msgstr "tapahtuman päivämäärä"
-
-#~ msgid "address"
-#~ msgstr "osoite"
-
-#~ msgid "phone"
-#~ msgstr "puhelin"
-
-#~ msgid "e-mail"
-#~ msgstr "sähköposti"
-
-#~ msgid "Event Worker Options"
-#~ msgstr "Event Worker Asetukset"
-
-#~ msgid "LINK"
-#~ msgstr "LINKKI"
-
-#~ msgid "TODAY"
-#~ msgstr "TÄNÄÄN"
-
-#~ msgid "ALL EVENTS"
-#~ msgstr "KAIKKI"
-
-#~ msgid "EVENTS TODAY"
-#~ msgstr "TÄNÄÄN"
-
-#~ msgid "PLAIN TEXT"
-#~ msgstr "TEKSTITIEDOSTO"
-
-#~ msgid "Previous"
-#~ msgstr "Edellinen"
-
-#~ msgid "Next"
-#~ msgstr "Seuraava"
-
-#~ msgid "date"
-#~ msgstr "päivä"
