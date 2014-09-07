@@ -44,7 +44,7 @@ class WorkerMainClass
         require_once('lib/loaders/page-template-loader.php');
         require_once('lib/loaders/feed-loader.php');
 
-        add_action('plugins_loaded', array($this, 'myplugin_init'));
+        add_action('plugins_loaded', array($this, 'event_worker_init'));
         add_filter('query_vars', array($this, 'addnew_query_vars' ));
     }
 
@@ -63,9 +63,9 @@ class WorkerMainClass
      * TODO.
      *
      */
-    function myplugin_init()
+    function event_worker_init()
     {
-        load_plugin_textdomain('my-pluginname', FALSE, dirname(plugin_basename(__FILE__)).'/lib/languages/');
+        load_plugin_textdomain('event-worker-translations', FALSE, dirname(plugin_basename(__FILE__)).'/lib/languages/');
     }
 
     /**

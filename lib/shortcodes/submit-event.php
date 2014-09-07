@@ -35,7 +35,7 @@ class WorkerSubmitShortcode
         // The user needs to be logged in.
         if (!is_user_logged_in())
         {
-            return '<p>' . __('You need to be logged in to post!') .'</p>';
+            return '<p>' . __('You need to be logged in to post!', 'event-worker-translations') .'</p>';
         }
 
         if (isset($_POST['worker_form_create_event_submitted']) &&
@@ -154,13 +154,13 @@ class WorkerSubmitShortcode
                                      'event_organizer_data',
                                      $organizer_data);
 
-                    echo '<p>' . __('Event created and awaiting moderation!') .
+                    echo '<p>' . __('Event created and awaiting moderation!', 'event-worker-translations') .
                          '</p>';
                 }
             }
             else
             {
-                echo __('Event NOT saved! Fields are empty!') . '<br><br>';
+                echo __('Event NOT saved! Fields are empty!', 'event-worker-translations') . '<br><br>';
             }
         }
 
@@ -183,35 +183,35 @@ class WorkerSubmitShortcode
 
         $out .= '<table width=100%;>
                     <tr>
-                      <td class="eventtablecontainer">' . __('NAME') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('name', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="text" style="width:100%; id="worker_event_name" name="worker_event_name" value=""/></td>
                     </tr>
                     <tr>                    
-                      <td class="eventtablecontainer">' . __('START DATE') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('start date', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="text" class="eventdate" style="width:100%;" id="worker_event_start_date" name="worker_event_start_date" value=""/></td>
                     </tr>
                     <tr>
-                      <td class="eventtablecontainer">' . __('END DATE') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('end date', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="text" class="eventdate" style="width:100%;" id="worker_event_end_date" name="worker_event_end_date" value=""/></td>
                     </tr>
                     <tr>
-                      <td class="eventtablecontainer">' . __('PRICE') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('price', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="number" min="0" style="width:100%;" id="worker_event_price" name="worker_event_price" value="" onkeypress="return isNumberKey(event)"/></td> 
                     </tr>
                     <tr>
                       <td class="eventtablecontainersecond" colspan="2"><textarea id="worker_event_text" style="width:100%;height:100px;" name="worker_event_text" placeholder="EVENT DESCRIPTION"/></textarea></td>
                     </tr>
                     <tr>
-                      <td class="eventtablecontainer">' . __('WEBSITE') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('website', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="url" style="width:100%;" id="worker_event_website" name="worker_event_website" value="' . '' .'"/></td> 
                     </tr>
                     <tr>
-                      <td class="eventtablecontainer">' . __('CATEGORY') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('category', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond">' . $this->worker_get_event_categories_dropdown('event_category', $worker_event_category) . '</td> 
                     </tr>
                     <tr>
 
-                      <td class="eventtablecontainer">' . __('ORGANIZER') . '</td>' .
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('organizer', 'event-worker-translations')) . '</td>' .
                       '<td class="eventtablecontainersecond">' .
                       '<input type="text" id="worker_event_organizer" name="worker_event_organizer" style="width:100%;" class="auto" value="' . wp_get_current_user()->display_name .'"/>' .
                       '<input type="text" id="organizer_address" name="organizer_address" placeholder="Address" style="width:50%;" value=""/>' .
@@ -221,7 +221,7 @@ class WorkerSubmitShortcode
 
                     '</tr>
                     <tr>
-                      <td class="eventtablecontainer">' . __('LOCATION') . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('location', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input id="worker_event_location_name" name="worker_event_location_name" placeholder="Name" type="text" style="width:50%;"/><input placeholder="Address" type="text" style="width:50%;" id="worker_event_location" name="worker_event_location" value=""/></td>
                       <input type="hidden" id="worker_event_geolocation" name="worker_event_geolocation" value=""/>
                     </tr>

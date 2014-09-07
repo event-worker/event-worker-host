@@ -132,8 +132,6 @@ class WorkerAdminMetaBoxes
         {
             $price = null;
         }
-
-        echo '<label for="AdminEventPrice">Price</label><br/>';   
         echo '<input type="number" class="eventprice" id="AdminEventPrice" name="AdminEventPrice" onkeypress="return isNumberKey(event)" value="' . $price . '"/><br/>';
     }
 
@@ -154,7 +152,7 @@ class WorkerAdminMetaBoxes
             $website = null;
         }
 
-        echo '<label for="AdminEventWebsite">Website</label><br/>';
+        echo '<label for="AdminEventWebsite">URL</label><br/>';
         echo '<input <input type="url" class="eventwebsite" id="AdminEventWebsite" name="AdminEventWebsite" value="' . $website . '"/><br/>';
     }
 
@@ -182,9 +180,7 @@ class WorkerAdminMetaBoxes
             $organizer_email ='';
             $organizer_website = '';
         }
-
-        echo '<label for="AdminEventOrganizer">Organizer</label><br/>';
-        echo '<input type="text" class="auto" name="AdminEventOrganizer" value="' . $organizer . '" style="width: 100%;"/><br/>';
+        echo '<input type="text" class="auto" placeholder="Name" name="AdminEventOrganizer" value="' . $organizer . '" style="width: 100%;"/><br/>';
         echo '<input type="text" id="organizer_address" name="organizer_address" placeholder="Address" value="' .  $organizer_address . '" style="width: 100%;"/>';
         echo '<input type="text" id="organizer_phone" name="organizer_phone" placeholder="Phone" value="' .  $organizer_phone . '" style="width: 100%;"/><br/>';
         echo '<input type="text" id="organizer_email" name="organizer_email" placeholder="E-mail" value="' .  $organizer_email . '" style="width: 100%;"/>';

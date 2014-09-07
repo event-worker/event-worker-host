@@ -1,0 +1,296 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: my-pluginname 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-07 19:03+0200\n"
+"PO-Revision-Date: 2014-09-07 19:05+0200\n"
+"Last-Translator: Janne Kähkönen <jannekahkonen@gmail.com>\n"
+"Language-Team: Janne Kähkönen <jannekahkonen@gmail.com>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../core.php:52
+msgid "Event"
+msgstr "Tapahtuma"
+
+#: ../core.php:53 ../core.php:54 ../core.php:56
+msgid "Add new event"
+msgstr "Lisää uusi tapahtuma"
+
+#: ../core.php:55
+msgid "Edit event"
+msgstr "Muokkaa tapahtumaa"
+
+#: ../core.php:57
+msgid "View events"
+msgstr "Näytä tapahtumat"
+
+#: ../core.php:58
+msgid "View event"
+msgstr "Näytä tapahtuma"
+
+#: ../core.php:59
+msgid "Search events"
+msgstr "Etsi tapahtumia"
+
+#: ../core.php:60
+msgid "No events found"
+msgstr "Ei tapahtumia"
+
+#: ../core.php:61
+msgid "No events found in Trash"
+msgstr "Ei tapahtumia roskakorissa"
+
+#: ../core.php:63
+msgid "Events"
+msgstr "Tapahtumat"
+
+#: ../core.php:82 ../core.php:92
+msgid "Event categories"
+msgstr "Kategoriat"
+
+#: ../core.php:84
+msgid "Search event categories"
+msgstr "Etsi kategorioita"
+
+#: ../core.php:85
+msgid "All event categories"
+msgstr "Kaikki kategoriat"
+
+#: ../core.php:86
+msgid "Parent event category"
+msgstr ""
+
+#: ../core.php:87
+msgid "Parent event category:"
+msgstr ""
+
+#: ../core.php:88
+msgid "Edit event category"
+msgstr "Muokkaa kategoriaa"
+
+#: ../core.php:89
+msgid "Update event category"
+msgstr "Päivitä kategoria"
+
+#: ../core.php:90
+msgid "Add new event category"
+msgstr "Lisää uusi kategoria"
+
+#: ../core.php:91
+msgid "New event name"
+msgstr ""
+
+#: ../core.php:104
+msgid "Uncategorized event"
+msgstr "Luokittelematon tapahtuma"
+
+#: ../loaders/scripts-and-styles-loader.php:23
+msgid "hour"
+msgstr "tunti"
+
+#: ../loaders/scripts-and-styles-loader.php:24
+msgid "time"
+msgstr "aika"
+
+#: ../loaders/scripts-and-styles-loader.php:25
+msgid "minute"
+msgstr "minuutti"
+
+#: ../loaders/scripts-and-styles-loader.php:27
+msgid "Su"
+msgstr "Su"
+
+#: ../loaders/scripts-and-styles-loader.php:28
+msgid "Mo"
+msgstr "Ma"
+
+#: ../loaders/scripts-and-styles-loader.php:29
+msgid "Tu"
+msgstr "Ti"
+
+#: ../loaders/scripts-and-styles-loader.php:30
+msgid "We"
+msgstr "Ke"
+
+#: ../loaders/scripts-and-styles-loader.php:31
+msgid "Th"
+msgstr "To"
+
+#: ../loaders/scripts-and-styles-loader.php:32
+msgid "Fr"
+msgstr "Pe"
+
+#: ../loaders/scripts-and-styles-loader.php:33
+msgid "Sa"
+msgstr "La"
+
+#: ../loaders/scripts-and-styles-loader.php:35
+msgid "January"
+msgstr "Tammikuu"
+
+#: ../loaders/scripts-and-styles-loader.php:36
+msgid "February"
+msgstr "Helmikuu"
+
+#: ../loaders/scripts-and-styles-loader.php:37
+msgid "March"
+msgstr "Maaliskuu"
+
+#: ../loaders/scripts-and-styles-loader.php:38
+msgid "April"
+msgstr "Huhtikuu"
+
+#: ../loaders/scripts-and-styles-loader.php:39
+msgid "May"
+msgstr "Toukokuu"
+
+#: ../loaders/scripts-and-styles-loader.php:40
+msgid "June"
+msgstr "Kesäkuu"
+
+#: ../loaders/scripts-and-styles-loader.php:41
+msgid "July"
+msgstr "Heinäkuu"
+
+#: ../loaders/scripts-and-styles-loader.php:42
+msgid "August"
+msgstr "Elokuu"
+
+#: ../loaders/scripts-and-styles-loader.php:43
+msgid "Septemper"
+msgstr "Syyskuu"
+
+#: ../loaders/scripts-and-styles-loader.php:44
+msgid "October"
+msgstr "Lokakuu"
+
+#: ../loaders/scripts-and-styles-loader.php:45
+msgid "November"
+msgstr "Marraskuu"
+
+#: ../loaders/scripts-and-styles-loader.php:46
+msgid "December"
+msgstr "Joulukuu"
+
+#: ../pdf-generator.php:36
+msgid "Document generated"
+msgstr "Dokumentti luotu"
+
+#: ../pdf-generator.php:212 ../pdf-generator.php:327
+#: ../shortcodes/submit-event.php:198
+msgid "price"
+msgstr "hinta"
+
+#: ../pdf-generator.php:321 ../shortcodes/submit-event.php:214
+msgid "organizer"
+msgstr "järjestäjä"
+
+#: ../pdf-generator.php:322
+msgid "organizer address"
+msgstr "järjestäjän osoite"
+
+#: ../pdf-generator.php:323
+msgid "organizer phone"
+msgstr "järjestäjän puhelin"
+
+#: ../pdf-generator.php:324
+msgid "organizer e-mail"
+msgstr "järjestäjän sähköposti"
+
+#: ../pdf-generator.php:325
+msgid "organizer website"
+msgstr "järjestäjän kotisivu"
+
+#: ../pdf-generator.php:328
+msgid "Location"
+msgstr "Sijainti"
+
+#: ../shortcodes/submit-event.php:38
+msgid "You need to be logged in to post!"
+msgstr ""
+
+#: ../shortcodes/submit-event.php:157
+msgid "Event created and awaiting moderation!"
+msgstr ""
+
+#: ../shortcodes/submit-event.php:163
+msgid "Event NOT saved! Fields are empty!"
+msgstr "Tapahtumaa ei tallennettu! Jotkin kentät ovat tyhjiä!"
+
+#: ../shortcodes/submit-event.php:186
+msgid "name"
+msgstr "nimi"
+
+#: ../shortcodes/submit-event.php:190
+msgid "start date"
+msgstr "alkupäivä"
+
+#: ../shortcodes/submit-event.php:194
+msgid "end date"
+msgstr "loppupäivä"
+
+#: ../shortcodes/submit-event.php:205
+msgid "website"
+msgstr "kotisivu"
+
+#: ../shortcodes/submit-event.php:209
+msgid "category"
+msgstr "kategoria"
+
+#: ../shortcodes/submit-event.php:224
+msgid "location"
+msgstr "sijainti"
+
+#~ msgid "event date"
+#~ msgstr "tapahtuman päivämäärä"
+
+#~ msgid "address"
+#~ msgstr "osoite"
+
+#~ msgid "phone"
+#~ msgstr "puhelin"
+
+#~ msgid "e-mail"
+#~ msgstr "sähköposti"
+
+#~ msgid "Event Worker Options"
+#~ msgstr "Event Worker Asetukset"
+
+#~ msgid "LINK"
+#~ msgstr "LINKKI"
+
+#~ msgid "TODAY"
+#~ msgstr "TÄNÄÄN"
+
+#~ msgid "ALL EVENTS"
+#~ msgstr "KAIKKI"
+
+#~ msgid "EVENTS TODAY"
+#~ msgstr "TÄNÄÄN"
+
+#~ msgid "PLAIN TEXT"
+#~ msgstr "TEKSTITIEDOSTO"
+
+#~ msgid "Previous"
+#~ msgstr "Edellinen"
+
+#~ msgid "Next"
+#~ msgstr "Seuraava"
+
+#~ msgid "date"
+#~ msgstr "päivä"
