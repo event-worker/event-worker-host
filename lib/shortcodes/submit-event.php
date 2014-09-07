@@ -20,39 +20,7 @@ class WorkerSubmitShortcode
     {
         add_shortcode('worker_form', array($this, 'worker_form_shortcode'));
         add_action('save_post', array($this,'custom_save_page'));
-        add_action( 'wp_footer', array($this, 'add_js_to_wp_footer' ));
-        add_action( 'wp_ajax_view_site_description', array($this, 'view_site_description' ));
-        add_action( 'wp_ajax_nopriv_view_site_description', array($this, 'view_site_description' ));
-        add_action( 'wp_head', array($this, 'pluginname_ajaxurl'));
     }
-
-function pluginname_ajaxurl() {
-?>
-<script type="text/javascript">
-var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-</script>
-<?php
-}
-
-
-    function view_site_description(){
-    echo get_bloginfo( 'description', 'display' );
-    die();
-}
-
-    function add_js_to_wp_footer(){ ?>
-    <script type="text/javascript">
-    jQuery('#view_site_description').click(function(){
-        jQuery.ajax({
-            type: 'POST',
-            url: ajaxurl,
-            data: {"action": "view_site_description"},
-            success: function(data){alert(data);}
-        });
-        return false;
-    });
-    </script>
-<?php }
 
     /** 
      * The shorcode.
@@ -186,24 +154,6 @@ var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
                                      'event_organizer_data',
                                      $organizer_data);
 
-                    $temp = array('name' => $worker_event_organizer) + $organizer_data;
-                    $table = new Table('worker_event_organizers');
-                    $names = $table->get_all();
-
-                    $check = true;
-
-                    foreach ($names as $name)
-                    {
-                        if ($name->name === $worker_event_organizer)
-                        {
-                            $check = false;
-                        }                
-                    }
-                    if ($check === true)
-                    {
-                        $table->insert($temp);
-                    }
-
                     echo '<p>' . __('Event created and awaiting moderation!') .
                          '</p>';
                 }
@@ -227,9 +177,9 @@ var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
      */
     function worker_get_create_event_form($worker_event_category = 0)
     {
-        $out = '<div class="eventdivcontainer" align="center"><a id="view_site_description" href="javascript:void(0);">View Our Site Description</a>';
+        $out = '<div class="eventdivcontainer" align="center">';
 
-        $out .= '<form id="create_event_form" method="post" action="">';
+        $out = '<form id="create_event_form" method="post" action="">';
 
         $out .= '<table width=100%;>
                     <tr>
