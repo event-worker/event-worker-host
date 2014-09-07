@@ -74,41 +74,7 @@ class WorkerMainClass
      */
     function event_worker_activation()
     {
-        wp_schedule_event(time(), 'testaus', 'my_hook');
-
-        global $wpdb;
-
-        $table_name = $wpdb->prefix . "worker_event_organizers";
-
-        /*
-         * We'll set the default character set and collation for this table.
-         * If we don't do this, some characters could end up being converted 
-         * to just ?'s when saved in our table.
-         */
-        $charset_collate = '';
-
-        if (!empty($wpdb->charset))
-        {
-            $charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset}";
-        }
-
-        if (!empty( $wpdb->collate ))
-        {
-            $charset_collate .= " COLLATE {$wpdb->collate}";
-        }
-
-        $sql = "CREATE TABLE $table_name (
-          id mediumint(9) NOT NULL AUTO_INCREMENT,
-          name varchar(55) DEFAULT '' NOT NULL,
-          address varchar(55) DEFAULT '' NOT NULL,
-          phone varchar(55) DEFAULT '' NOT NULL,
-          email varchar(55) DEFAULT '' NOT NULL,
-          website varchar(55) DEFAULT '' NOT NULL,
-          UNIQUE KEY id (id)
-        ) $charset_collate;";
-
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
+        wp_schedule_event(time(), 'hourly', 'my_hook');
     }
 
     /**
@@ -116,7 +82,7 @@ class WorkerMainClass
      *
      */
     function event_worker_deactivation()
-    {  
+    {
         wp_clear_scheduled_hook('my_hook');
     }
 

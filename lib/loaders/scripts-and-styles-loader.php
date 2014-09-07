@@ -160,7 +160,6 @@ class WorkerMainScriptLoader
                           plugins_url('../js/validator.js', __FILE__),
                           array(), '1', false);
 
-        wp_enqueue_script('jquery-ui-autocomplete');
         wp_enqueue_script('jquery-ui-datepicker');
         wp_enqueue_script('jquery-ui-slider');
 
@@ -173,10 +172,6 @@ class WorkerMainScriptLoader
 
         wp_register_style('timepicker-theme' , plugins_url('../css/jquery-ui-timepicker-addon.css', __FILE__));
         wp_enqueue_style('timepicker-theme');
-
-        wp_enqueue_script('autocomplete',
-                          plugins_url('../js/autocomplete.js', __FILE__),
-                          array(), '10', false);
     }
 }
 new WorkerMainScriptLoader();

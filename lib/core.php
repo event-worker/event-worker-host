@@ -19,7 +19,6 @@ class WorkerCore
     function __construct()
     {
         require_once('common-options.php');
-        require_once('custom-database-helper.php');
         require_once('pre-order-events.php');
         require_once('admin-meta.php');
         require_once('menu-items.php');
