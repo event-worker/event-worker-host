@@ -183,7 +183,7 @@ class WorkerSubmitShortcode
 
         $out .= '<table width=100%;>
                     <tr>
-                      <td class="eventtablecontainer">' . mb_strtoupper(__('name', 'event-worker-translations')) . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('NAME', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="text" style="width:100%; id="worker_event_name" name="worker_event_name" value=""/></td>
                     </tr>
                     <tr>                    
