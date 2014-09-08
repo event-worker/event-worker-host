@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: my-pluginname 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-07 19:19+0200\n"
-"PO-Revision-Date: 2014-09-07 19:19+0200\n"
+"POT-Creation-Date: 2014-09-08 12:45+0200\n"
+"PO-Revision-Date: 2014-09-08 12:52+0200\n"
 "Last-Translator: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language-Team: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language: fi\n"
@@ -22,6 +22,83 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
+
+#: ../admin-meta.php:31 ../pdf-generator.php:321
+#: ../shortcodes/submit-event.php:214 ../templates/single-events.php:131
+msgid "organizer"
+msgstr "järjestäjä"
+
+#: ../admin-meta.php:32 ../admin-meta.php:188 ../pdf-generator.php:328
+#: ../shortcodes/submit-event.php:205 ../shortcodes/submit-event.php:220
+#: ../templates/single-events.php:130
+msgid "website"
+msgstr "kotisivu"
+
+#: ../admin-meta.php:33 ../pdf-generator.php:212 ../pdf-generator.php:327
+#: ../shortcodes/submit-event.php:198 ../templates/single-events.php:86
+msgid "price"
+msgstr "hinta"
+
+#: ../admin-meta.php:34
+msgid "event date"
+msgstr "tapahtuman päivämäärä"
+
+#: ../admin-meta.php:35 ../pdf-generator.php:329
+#: ../shortcodes/submit-event.php:224 ../templates/archive-events.php:157
+#: ../templates/single-events.php:145
+msgid "location"
+msgstr "sijainti"
+
+#: ../admin-meta.php:59 ../admin-meta.php:184
+#: ../shortcodes/submit-event.php:186 ../shortcodes/submit-event.php:216
+#: ../shortcodes/submit-event.php:225
+msgid "name"
+msgstr "nimi"
+
+#: ../admin-meta.php:62 ../admin-meta.php:185
+#: ../shortcodes/submit-event.php:217 ../shortcodes/submit-event.php:225
+msgid "address"
+msgstr "osoite"
+
+#: ../admin-meta.php:112 ../shortcodes/submit-event.php:190
+msgid "start date"
+msgstr "alkupäivä"
+
+#: ../admin-meta.php:115 ../shortcodes/submit-event.php:194
+msgid "end date"
+msgstr "loppupäivä"
+
+#: ../admin-meta.php:186 ../shortcodes/submit-event.php:218
+msgid "phone"
+msgstr "puhelin"
+
+#: ../admin-meta.php:187 ../shortcodes/submit-event.php:219
+msgid "e-mail"
+msgstr "sähköposti"
+
+#: ../common-options.php:18
+msgid "Event Worker Options"
+msgstr "Event Worker Asetukset"
+
+#: ../common-options.php:29
+msgid "Settings"
+msgstr "Asetukset"
+
+#: ../common-options.php:40
+msgid "Save Changes"
+msgstr "Tallenna"
+
+#: ../common-options.php:54
+msgid "API Options"
+msgstr "API Asetukset"
+
+#: ../common-options.php:62
+msgid "Endpoint"
+msgstr ""
+
+#: ../common-options.php:74
+msgid "Set the API endpoint"
+msgstr ""
 
 #: ../core.php:52
 msgid "Event"
@@ -73,7 +150,7 @@ msgstr "Kaikki kategoriat"
 
 #: ../core.php:86
 msgid "Parent event category"
-msgstr ""
+msgstr "Yläkategoria"
 
 #: ../core.php:87
 msgid "Parent event category:"
@@ -104,6 +181,7 @@ msgid "hour"
 msgstr "tunti"
 
 #: ../loaders/scripts-and-styles-loader.php:24
+#: ../templates/single-events.php:82
 msgid "time"
 msgstr "aika"
 
@@ -191,15 +269,6 @@ msgstr "Joulukuu"
 msgid "Document generated"
 msgstr "Dokumentti luotu"
 
-#: ../pdf-generator.php:212 ../pdf-generator.php:327
-#: ../shortcodes/submit-event.php:198
-msgid "price"
-msgstr "hinta"
-
-#: ../pdf-generator.php:321 ../shortcodes/submit-event.php:214
-msgid "organizer"
-msgstr "järjestäjä"
-
 #: ../pdf-generator.php:322
 msgid "organizer address"
 msgstr "järjestäjän osoite"
@@ -216,42 +285,55 @@ msgstr "järjestäjän sähköposti"
 msgid "organizer website"
 msgstr "järjestäjän kotisivu"
 
-#: ../pdf-generator.php:328
-msgid "Location"
-msgstr "Sijainti"
-
 #: ../shortcodes/submit-event.php:38
-msgid "You need to be logged in to post!"
-msgstr ""
+msgid "You need to be logged in!"
+msgstr "Et ole kirjautuneena!"
 
 #: ../shortcodes/submit-event.php:157
 msgid "Event created and awaiting moderation!"
-msgstr ""
+msgstr "Tapahtuma luotu ja odottaa hyväksyntää!"
 
 #: ../shortcodes/submit-event.php:163
 msgid "Event NOT saved! Fields are empty!"
 msgstr "Tapahtumaa ei tallennettu! Jotkin kentät ovat tyhjiä!"
 
-#: ../shortcodes/submit-event.php:186
-msgid "name"
-msgstr "nimi"
+#: ../shortcodes/submit-event.php:202
+msgid "event description"
+msgstr "tapahtuman kuvaus"
 
-#: ../shortcodes/submit-event.php:190
-msgid "start date"
-msgstr "alkupäivä"
-
-#: ../shortcodes/submit-event.php:194
-msgid "end date"
-msgstr "loppupäivä"
-
-#: ../shortcodes/submit-event.php:205
-msgid "website"
-msgstr "kotisivu"
-
-#: ../shortcodes/submit-event.php:209
+#: ../shortcodes/submit-event.php:209 ../templates/archive-events.php:166
+#: ../templates/single-events.php:87
 msgid "category"
 msgstr "kategoria"
 
-#: ../shortcodes/submit-event.php:224
-msgid "location"
-msgstr "sijainti"
+#: ../shortcodes/submit-event.php:232
+msgid "submit event"
+msgstr "lähetä tapahtuma"
+
+#: ../templates/archive-events.php:51
+msgid "TODAY"
+msgstr "TÄNÄÄN"
+
+#: ../templates/archive-events.php:71
+msgid "ALL EVENTS"
+msgstr "KAIKKI"
+
+#: ../templates/archive-events.php:72
+msgid "EVENTS TODAY"
+msgstr "TÄNÄÄN"
+
+#: ../templates/archive-events.php:118
+msgid "PLAIN TEXT"
+msgstr "TEKSTITIEDOSTO"
+
+#: ../templates/archive-events.php:174 ../templates/single-events.php:187
+msgid "Previous"
+msgstr "Edellinen"
+
+#: ../templates/archive-events.php:175 ../templates/single-events.php:199
+msgid "Next"
+msgstr "Seuraava"
+
+#: ../templates/single-events.php:82
+msgid "date"
+msgstr "päivä"

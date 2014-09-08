@@ -15,7 +15,7 @@ class CommonOptions
     {
         // add_options_page( $page_title, $menu_title, $capability, $menu_slug, $function )
         add_options_page('Event Worker',
-                         'Event Worker Options',
+                         __('Event Worker Options', 'event-worker-translations'),
                          'manage_options',
                          'event-worker',
                           array($this, 'create_plugin_settings_page'));
@@ -26,7 +26,7 @@ class CommonOptions
         ?>
         <div class="wrap">
 
-            <h2>Settings</h2>
+            <h2><?php _e('Settings', 'event-worker-translations'); ?></h2>
             <form method="post" action="options.php">
 
             <?php
@@ -37,9 +37,8 @@ class CommonOptions
 
                 // do_settings_sections( $page )
                 do_settings_sections('event-worker');
+                submit_button(__('Save Changes', 'event-worker-translations'));
             ?>
-
-            <?php submit_button('Save Changes'); ?>
             </form>
 
         </div>
@@ -52,7 +51,7 @@ class CommonOptions
         // add_settings_section( $id, $title, $callback, $page )
         add_settings_section(
             'api-endpoint-settings-section',
-            'API Options',
+            __('API Options', 'event-worker-translations'),
             array($this, 'print_api_endpoint_settings_section_info'),
             'event-worker'
         );
@@ -60,7 +59,7 @@ class CommonOptions
         // add_settings_field( $id, $title, $callback, $page, $section, $args )
         add_settings_field(
             'api-endpoint', 
-            'Endpoint', 
+            __('Endpoint', 'event-worker-translations'),
             array($this, 'create_input_api_endpoint'), 
             'event-worker', 
             'api-endpoint-settings-section'
@@ -72,7 +71,7 @@ class CommonOptions
  
     function print_api_endpoint_settings_section_info()
     {
-        echo 'Set the API endpoint.';
+        _e('Set the API endpoint', 'event-worker-translations');
     }
  
     function create_input_api_endpoint()

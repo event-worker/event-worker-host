@@ -48,7 +48,7 @@ class WorkerArchiveEventsTemplate
 
         if ($today >= $date)
         {
-            $date = '<div class="today">TODAY ' . $date->format('H:i') . '</div>';
+            $date = '<div class="today">' . __("TODAY", 'event-worker-translations') . ' ' . $date->format('H:i') . '</div>';
         }
         else
         {
@@ -68,8 +68,8 @@ class WorkerArchiveEventsTemplate
         $current_url = $_SERVER["REQUEST_URI"];
 
         echo '<div class="floating-menu">';
-        echo '<a href="' . home_url() . '/events' .'">ALL EVENTS</a>';
-        echo '<a href="' .  $current_url . '?filter=today' .'">EVENTS TODAY</a>';
+        echo '<a href="' . home_url() . '/events' .'">' . __('ALL EVENTS', 'event-worker-translations') . '</a>';
+        echo '<a href="' .  $current_url . '?filter=today' .'">' . __('EVENTS TODAY', 'event-worker-translations') . '</a>';
         echo '<br>';
 
         $core = new WorkerCore();
@@ -115,11 +115,9 @@ class WorkerArchiveEventsTemplate
 
         echo '<a href="' . home_url() . '/events.pdf' .'">PDF</a>';
         echo ' | ';
-        echo '<a href="' . home_url() . '/events.txt' .'">PLAIN TEXT</a>';
+        echo '<a href="' . home_url() . '/events.txt' .'">' . __("PLAIN TEXT", 'event-worker-translations') . '</a>';
 
         echo '</div>';
-
-
 
         while (have_posts())
         {   
@@ -156,14 +154,16 @@ class WorkerArchiveEventsTemplate
                 $lname .= ' - ';
             }
 
+            $location = strtoupper(__("location", 'event-worker-translations'));
+            
             echo '<div id="common_wrapper">';
-            echo '<div id="test">LOCATION ';
+            echo '<div id="test">' . $location;
             echo '</div>';
             echo $lname . get_post_meta(get_the_ID(), 'event_location')[0];
             echo '</div>';
 
             echo '<div id="common_wrapper">';
-            echo '<div id="test">CATEGORY ';
+            echo '<div id="test">' . strtoupper(__('category', 'event-worker-translations'));
             echo '</div>';
             echo get_the_term_list(get_the_ID(), 'event_category', '', ' &bull; ', '');
             echo '</div><br>';
@@ -171,8 +171,8 @@ class WorkerArchiveEventsTemplate
         wp_reset_postdata();
 
         echo '<div style="text-align:center">';
-        echo previous_posts_link('&laquo; Previous') . ' | ';
-        echo next_posts_link('Next &raquo;') . '</div><br><br>';
+        echo previous_posts_link('&laquo; ' . __("Previous", 'event-worker-translations')) . ' | ';
+        echo next_posts_link(__("Next", 'event-worker-translations') .' &raquo;') . '</div><br><br>';
 
         echo '</div>';
         get_footer();

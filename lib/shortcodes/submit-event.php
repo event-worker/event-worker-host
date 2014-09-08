@@ -35,7 +35,7 @@ class WorkerSubmitShortcode
         // The user needs to be logged in.
         if (!is_user_logged_in())
         {
-            return '<p>' . __('You need to be logged in to post!', 'event-worker-translations') .'</p>';
+            return '<p>' . __('You need to be logged in!', 'event-worker-translations') .'</p>';
         }
 
         if (isset($_POST['worker_form_create_event_submitted']) &&
@@ -183,7 +183,7 @@ class WorkerSubmitShortcode
 
         $out .= '<table width=100%;>
                     <tr>
-                      <td class="eventtablecontainer">' . mb_strtoupper(__('NAME', 'event-worker-translations')) . '</td>
+                      <td class="eventtablecontainer">' . mb_strtoupper(__('name', 'event-worker-translations')) . '</td>
                       <td class="eventtablecontainersecond"><input type="text" style="width:100%; id="worker_event_name" name="worker_event_name" value=""/></td>
                     </tr>
                     <tr>                    
@@ -199,7 +199,7 @@ class WorkerSubmitShortcode
                       <td class="eventtablecontainersecond"><input type="number" min="0" style="width:100%;" id="worker_event_price" name="worker_event_price" value="" onkeypress="return isNumberKey(event)"/></td> 
                     </tr>
                     <tr>
-                      <td class="eventtablecontainersecond" colspan="2"><textarea id="worker_event_text" style="width:100%;height:100px;" name="worker_event_text" placeholder="EVENT DESCRIPTION"/></textarea></td>
+                      <td class="eventtablecontainersecond" colspan="2"><textarea id="worker_event_text" style="width:100%;height:100px;" name="worker_event_text" placeholder="' . mb_strtoupper(__('event description', 'event-worker-translations')) . '"/></textarea></td>
                     </tr>
                     <tr>
                       <td class="eventtablecontainer">' . mb_strtoupper(__('website', 'event-worker-translations')) . '</td>
@@ -213,23 +213,23 @@ class WorkerSubmitShortcode
 
                       <td class="eventtablecontainer">' . mb_strtoupper(__('organizer', 'event-worker-translations')) . '</td>' .
                       '<td class="eventtablecontainersecond">' .
-                      '<input type="text" id="worker_event_organizer" name="worker_event_organizer" style="width:100%;" class="auto" value="' . wp_get_current_user()->display_name .'"/>' .
-                      '<input type="text" id="organizer_address" name="organizer_address" placeholder="Address" style="width:50%;" value=""/>' .
-                      '<input type="text" id="organizer_phone" name="organizer_phone" placeholder="Phone" style="width:50%;" value=""/>' .
-                      '<input type="text" id="organizer_email" name="organizer_email" placeholder="E-mail" style="width:50%;" value=""/>' .
-                      '<input type="text" id="organizer_website" name="organizer_website" placeholder="Website" style="width:50%;" value=""/></td>' .
+                      '<input type="text" id="worker_event_organizer" placeholder="' . ucfirst(__( 'name', 'event-worker-translations' )) . '" name="worker_event_organizer" style="width:100%;" class="auto" value="' . wp_get_current_user()->display_name .'"/>' .
+                      '<input type="text" id="organizer_address" name="organizer_address" placeholder="' . ucfirst(__( 'address', 'event-worker-translations' )) . '" style="width:50%;" value=""/>' .
+                      '<input type="text" id="organizer_phone" name="organizer_phone" placeholder="' . ucfirst(__( 'phone', 'event-worker-translations' )) . '" style="width:50%;" value=""/>' .
+                      '<input type="text" id="organizer_email" name="organizer_email" placeholder="' . ucfirst(__( 'e-mail', 'event-worker-translations' )) . '" style="width:50%;" value=""/>' .
+                      '<input type="text" id="organizer_website" name="organizer_website" placeholder="' . ucfirst(__( 'website', 'event-worker-translations' )) . '" style="width:50%;" value=""/></td>' .
 
                     '</tr>
                     <tr>
                       <td class="eventtablecontainer">' . mb_strtoupper(__('location', 'event-worker-translations')) . '</td>
-                      <td class="eventtablecontainersecond"><input id="worker_event_location_name" name="worker_event_location_name" placeholder="Name" type="text" style="width:50%;"/><input placeholder="Address" type="text" style="width:50%;" id="worker_event_location" name="worker_event_location" value=""/></td>
+                      <td class="eventtablecontainersecond"><input id="worker_event_location_name" name="worker_event_location_name" placeholder="' . ucfirst(__( 'name', 'event-worker-translations' )) . '" type="text" style="width:50%;"/><input placeholder="' . ucfirst(__( 'address', 'event-worker-translations' )) . '" type="text" style="width:50%;" id="worker_event_location" name="worker_event_location" value=""/></td>
                       <input type="hidden" id="worker_event_geolocation" name="worker_event_geolocation" value=""/>
                     </tr>
                  </table>
                  <div id="googleMap" style="align:center;width:100%;height:300px;"></div><br>';
 
         $out .= wp_nonce_field('worker_form_create_event', 'worker_form_create_event_submitted');
-        $out .= '<input type="submit" id="worker_submit" name="worker_submit" value="Submit event"><br><br><br>';
+        $out .= '<input type="submit" id="worker_submit" name="worker_submit" value="' . mb_strtoupper(__('submit event', 'event-worker-translations')) . '"><br><br><br>';
        
         $wslh = new WorkerScriptLoaderHelper();
         $wslh->getLocation();
