@@ -49,8 +49,9 @@ class WorkerMainClass
     }
 
     /**
-     * TODO.
-     * filter is the name of variable you want to add.
+     * Add filter variable to filter posts
+     *
+     * @param TODO
      *
      */
     function addnew_query_vars($vars)
