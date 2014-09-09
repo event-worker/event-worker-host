@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: my-pluginname 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 12:45+0200\n"
-"PO-Revision-Date: 2014-09-08 12:52+0200\n"
+"POT-Creation-Date: 2014-09-08 16:28+0200\n"
+"PO-Revision-Date: 2014-09-08 16:28+0200\n"
 "Last-Translator: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language-Team: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language: fi\n"
@@ -23,18 +23,18 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../admin-meta.php:31 ../pdf-generator.php:321
+#: ../admin-meta.php:31 ../pdf-generator.php:318
 #: ../shortcodes/submit-event.php:214 ../templates/single-events.php:131
 msgid "organizer"
 msgstr "järjestäjä"
 
-#: ../admin-meta.php:32 ../admin-meta.php:188 ../pdf-generator.php:328
+#: ../admin-meta.php:32 ../admin-meta.php:188 ../pdf-generator.php:325
 #: ../shortcodes/submit-event.php:205 ../shortcodes/submit-event.php:220
 #: ../templates/single-events.php:130
 msgid "website"
 msgstr "kotisivu"
 
-#: ../admin-meta.php:33 ../pdf-generator.php:212 ../pdf-generator.php:327
+#: ../admin-meta.php:33 ../pdf-generator.php:209 ../pdf-generator.php:324
 #: ../shortcodes/submit-event.php:198 ../templates/single-events.php:86
 msgid "price"
 msgstr "hinta"
@@ -43,7 +43,7 @@ msgstr "hinta"
 msgid "event date"
 msgstr "tapahtuman päivämäärä"
 
-#: ../admin-meta.php:35 ../pdf-generator.php:329
+#: ../admin-meta.php:35 ../pdf-generator.php:326
 #: ../shortcodes/submit-event.php:224 ../templates/archive-events.php:157
 #: ../templates/single-events.php:145
 msgid "location"
@@ -269,19 +269,19 @@ msgstr "Joulukuu"
 msgid "Document generated"
 msgstr "Dokumentti luotu"
 
-#: ../pdf-generator.php:322
+#: ../pdf-generator.php:319
 msgid "organizer address"
 msgstr "järjestäjän osoite"
 
-#: ../pdf-generator.php:323
+#: ../pdf-generator.php:320
 msgid "organizer phone"
 msgstr "järjestäjän puhelin"
 
-#: ../pdf-generator.php:324
+#: ../pdf-generator.php:321
 msgid "organizer e-mail"
 msgstr "järjestäjän sähköposti"
 
-#: ../pdf-generator.php:325
+#: ../pdf-generator.php:322
 msgid "organizer website"
 msgstr "järjestäjän kotisivu"
 
