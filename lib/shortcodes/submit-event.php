@@ -39,8 +39,8 @@ class WorkerSubmitShortcode
         }
 
         if (isset($_POST['worker_form_create_event_submitted']) &&
-            wp_verify_nonce($_POST['worker_form_create_event_submitted'],
-            'worker_form_create_event') )
+                  wp_verify_nonce($_POST['worker_form_create_event_submitted'],
+                                  'worker_form_create_event'))
         {
             $worker_event_name = trim($_POST['worker_event_name']);
             $worker_event_text = trim($_POST['worker_event_text']);
@@ -52,14 +52,13 @@ class WorkerSubmitShortcode
             $worker_event_location_name = trim($_POST['worker_event_location_name']);
             $worker_event_geolocation = trim($_POST['worker_event_geolocation']);
 
-            // OPTIONAL 
             $worker_event_price = trim($_POST['worker_event_price']);
             $worker_event_website = trim($_POST['worker_event_website']);
 
             $worker_event_organizer = trim($_POST['worker_event_organizer']);
             $worker_event_organizer_address = trim($_POST['organizer_address']);
 
-            // NEEDED
+            // Required.
             if ($worker_event_name != '' &&
                 $worker_event_text != '' &&
                 $worker_event_start_date != '' &&
@@ -73,7 +72,7 @@ class WorkerSubmitShortcode
                     'post_type' => 'events'
                 );
 
-                // ADD TO DATABASE
+                // Add to database.
                 if ($event_id = wp_insert_post($event_data))
                 {
                     if (!empty($_POST["worker_event_category"]))
@@ -99,56 +98,53 @@ class WorkerSubmitShortcode
 
                     update_post_meta($event_id,
                                      'event_start_date',
-                                      $worker_event_start_date);
+                                     sanitize_text_field($worker_event_start_date));
                    
                     update_post_meta($event_id,
                                      'event_end_date',
-                                      $worker_event_end_date);
-
-                    $order = new WorkerFormatDate($worker_event_start_date);
-                    $only_digits = $order->$worker_event_start_date;
-
-                    $end_order = new WorkerFormatDate($worker_event_end_date);
-                    $only_digits2 = $end_order->$worker_event_end_date;
+                                     sanitize_text_field($worker_event_end_date));
+                   
+                    $ws = new DateTime($worker_event_start_date);
+                    $we = new DateTime($worker_event_end_date);
 
                     update_post_meta($event_id,
                                      'event_start_order',
-                                     $only_digits);
+                                     $ws);
 
                     update_post_meta($event_id,
                                      'event_end_order',
-                                     $only_digits2);
+                                     $we);
 
                     update_post_meta($event_id,
                                      'event_location',
-                                     $worker_event_location);
+                                     sanitize_text_field($worker_event_location));
 
                     update_post_meta($event_id,
                                      'event_location_name',
-                                     $worker_event_location_name);
+                                     sanitize_text_field($worker_event_location_name));
 
                     update_post_meta($event_id,
                                      'event_geolocation',
-                                     $worker_event_geolocation);
+                                     sanitize_text_field($worker_event_geolocation));
 
                     update_post_meta($event_id,
                                      'event_price',
-                                     $worker_event_price);
+                                     sanitize_text_field(floatval($worker_event_price)));
 
                     update_post_meta($event_id,
                                      'event_website',
-                                     $worker_event_website);
-
-                    $organizer_data = Array(
-                        'address' => trim($_POST['organizer_address']),
-                        'phone' => trim($_POST['organizer_phone']),
-                        'email' => trim($_POST['organizer_email']),
-                        'website' => trim($_POST['organizer_website'])
-                    );
+                                     esc_url_raw($worker_event_website));
 
                     update_post_meta($event_id,
                                      'event_organizer',
                                      $worker_event_organizer);
+
+                    $organizer_data = Array(
+                        'address' => sanitize_text_field($_POST['organizer_address']),
+                        'phone' => sanitize_text_field($_POST['organizer_phone']),
+                        'email' => sanitize_text_field($_POST['organizer_email']),
+                        'website' => esc_url_raw($_POST['organizer_website'])
+                    );
 
                     update_post_meta($event_id,
                                      'event_organizer_data',
@@ -196,7 +192,7 @@ class WorkerSubmitShortcode
                     </tr>
                     <tr>
                       <td class="eventtablecontainer">' . mb_strtoupper(__('price', 'event-worker-translations')) . '</td>
-                      <td class="eventtablecontainersecond"><input type="number" min="0" style="width:100%;" id="worker_event_price" name="worker_event_price" value="" onkeypress="return isNumberKey(event)"/></td> 
+                      <td class="eventtablecontainersecond"><input type="text" style="width:100%;" id="worker_event_price" name="worker_event_price" value="" onkeypress="return isNumberKey(event)"/></td> 
                     </tr>
                     <tr>
                       <td class="eventtablecontainersecond" colspan="2"><textarea id="worker_event_text" style="width:100%;height:100px;" name="worker_event_text" placeholder="' . mb_strtoupper(__('event description', 'event-worker-translations')) . '"/></textarea></td>
@@ -275,7 +271,7 @@ class WorkerSubmitShortcode
         $content_post = get_post($post_id);
         $content = $content_post->post_content;
 
-        if( has_shortcode( $content, 'worker_form' ) )
+        if(has_shortcode($content, 'worker_form'))
         {
             /** 
              * Add the options to the database.

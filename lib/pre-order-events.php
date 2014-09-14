@@ -29,7 +29,7 @@ class WorkerPreOrderPosts
      *
      */
     function parse_the_time()
-    {
+    {   
         date_default_timezone_set('Europe/Helsinki');
         $today = new DateTime('NOW');
         $today = $today->format('YmdHi');
@@ -62,9 +62,8 @@ class WorkerPreOrderPosts
      * @return object
      */
     function custom_pre_get_posts($query)
-    {   
-        
-        if (!$query->is_page() && $query->is_post_type_archive("events"))
+    {
+        if ($query->is_main_query() && $query->is_post_type_archive("events"))
         {
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $query->set('post_type', 'events');
@@ -84,6 +83,25 @@ class WorkerPreOrderPosts
                 );
                 $query->set( 'meta_query', $meta_query );
                 
+            }
+
+            $args = array(
+                'post_type'   => 'events',
+                'post_status' => 'publish',
+                'numberposts' => -1
+            );
+
+            $posts = get_posts($args);
+
+            foreach ($posts as $post)
+            {
+                $compare = get_post_meta($post->ID, 'event_end_order');
+
+                if ($compare[0] < $this->parse_the_time())
+                {
+                    $post = array('ID' => $post->ID, 'post_status' => 'draft');
+                    wp_update_post($post);
+                }
             }
         }
         if ($query->is_tax() && !$query->is_page())

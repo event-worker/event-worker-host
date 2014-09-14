@@ -46,7 +46,7 @@ class WorkerArchiveEventsTemplate
         $today = new DateTime('NOW');
         $date = new DateTime($date);
 
-        if ($today >= $date)
+        if ($today->format('d.m.Y') >= $date->format('d.m.Y'))
         {
             $date = '<div class="today">' . __("TODAY", 'event-worker-translations') . ' ' . $date->format('H:i') . '</div>';
         }
@@ -140,7 +140,7 @@ class WorkerArchiveEventsTemplate
 
             echo '<div id="title_wrapper">';
             echo '<a href="' . get_permalink(get_the_ID()) . '">' . $title . '</a>';
-            echo '<div id="ics"><a href="ics.php">' . "ICS" . '</a></div>';
+            //echo '<div id="ics"><a href="ics.php">' . "ICS" . '</a></div>';
             echo '</div>';
 
             $lname =  get_post_meta(get_the_ID(), 'event_location_name')[0];

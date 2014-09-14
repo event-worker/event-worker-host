@@ -138,11 +138,25 @@ function get_events()
         'post_type'   => 'events',
         'post_status' => 'publish',
         'numberposts' => -1,
-        'meta_key' => 'event_start_date',
-        'orderby' => 'meta_value_num'
+        'meta_key' => 'event_start_order',
+        'orderby' => 'meta_value_num',
+        'order'    => 'ASC'
     );
 
     $posts = get_posts($args);
+
+    foreach ($posts as $post)
+    {
+        $compare =  get_post_meta($post->ID, 'event_end_order')[0];
+
+        if ($compare < parse_the_time())
+        {
+            $post = array('ID' => $post->ID, 'post_status' => 'draft');
+            wp_update_post($post);
+        }
+    }
+
+    //$posts = get_posts($args);
     
     $count = count($posts);
 
