@@ -10,7 +10,6 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-
 class WorkerMenuItems
 {
     /** 
@@ -20,8 +19,9 @@ class WorkerMenuItems
     function __construct()
     {
         add_filter('wp_nav_menu_objects', array($this, 'menu_links'));
+
         add_filter('wp_list_pages_excludes',
-                    array($this, 'exclude_from_wp_list_pages'));
+                   array($this, 'exclude_from_wp_list_pages'));
     }
 
     /** 
