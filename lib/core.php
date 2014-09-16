@@ -23,7 +23,7 @@ class WorkerCore
         require_once('admin-meta.php');
         require_once('menu-items.php');
         require_once('shortcodes/submit-event.php');
-        //require_once('format-date.php');
+        require_once('file-generation/ajax-helper.php');
 
         add_action('init', array($this, 'worker_plugin_init'));
     }

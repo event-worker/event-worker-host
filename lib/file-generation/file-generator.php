@@ -1,5 +1,6 @@
 <?php
-require('fpdf/fpdf.php');
+
+require_once('fpdf/fpdf.php');
 set_time_limit(0);
 define('EURO', chr(128));
 date_default_timezone_set('Europe/Helsinki');
@@ -7,7 +8,7 @@ date_default_timezone_set('Europe/Helsinki');
 /**
  * Class for generating the PDF with FPDF library.
  *
- * Class extending FPDF librayr for generating PDF from the events.
+ * Class extending FPDF library for generating PDF from the events.
  *
  * @package EventWorker
  * @author  Janne Kahkonen <jannekahkonen@gmail.com>
@@ -15,13 +16,7 @@ date_default_timezone_set('Europe/Helsinki');
  *
  */
 class PDF extends FPDF
-{   
-    private $B = null;
-    private $I = null;
-    private $U = null;
-    private $HREF = null;
-    private $ALIGN = null;
-
+{
     public $today = null;
     public $json = null;
 
@@ -32,7 +27,7 @@ class PDF extends FPDF
     function __construct()
     {
         parent::__construct();
-       
+
         $text = __("Document generated", 'event-worker-translations');
         $this->today = $text . ": " . date("d.m.Y, H:i:s");
 
@@ -40,9 +35,9 @@ class PDF extends FPDF
         $endpoint = $options['api-endpoint'];
 
         $url = home_url() . '/' . $endpoint . '/event';
-
+       
         $output = wp_remote_get($url);
-
+        
         $this->json = json_decode($output['body'], true);
         $this->json = $this->json["@graph"];
 
@@ -117,6 +112,7 @@ class PDF extends FPDF
             $count++;
         }
         $text = rtrim($text);
+        $text = utf8_decode($text);
         return $count;
     }
 
@@ -131,7 +127,7 @@ class PDF extends FPDF
     function get_title($i)
     {
         $title = strtoupper($this->json[$i]['name']);
-        return utf8_decode($title);
+        return $title;
     }
 
     /** 
@@ -159,7 +155,12 @@ class PDF extends FPDF
      */
     function get_organizer($i)
     {
-        $organizer = $this->json[$i]['organizer']['name'];
+        $organizer = $this->json[$i]['organizer']['name'] . 
+                     " - " . $this->json[$i]['organizer']['address'] .
+                     " - " . $this->json[$i]['organizer']['telephone'] .
+                     " - " . $this->json[$i]['organizer']['email'] .
+                     " - " . $this->json[$i]['organizer']['url'];
+
         return utf8_decode($organizer);
     }
 
@@ -199,7 +200,7 @@ class PDF extends FPDF
         $title = $this->get_title($i);
 
         $this->SetFont('Times','B', 10);
-        $this->MultiCell(80, 4, $title, 0);
+        $this->MultiCell(80, 4, utf8_decode($title), 0);
 
         $this->SetFont('Times','',10);
 
@@ -210,20 +211,23 @@ class PDF extends FPDF
        
         $this->cell(80, 4, $price . EURO, 0);
 
-        $post = get_page_by_title($title, OBJECT, 'events');
+        //$post = get_page_by_title($title, OBJECT, 'events');
 
-        $location = get_post_meta($post->ID, 'event_location', true);
+        //$location = get_post_meta($post->ID, 'event_location', true);
 
-        $this->MultiCell(80, 4, $location, 0);
-
-        $this->Cell(80, 4, $this->get_organizer($i), 0);
-        $this->MultiCell(80, 4,  $keywords, 0);
+        $this->MultiCell(80, 4, utf8_decode($this->json[$i]['location']['name']) . " - " . utf8_decode($this->json[$i]['location']['address']), 0);
 
         $this->SetTextColor(50, 50, 50);
         $url = $this->json[$i]['sameAs'];
         $this->WordWrap($url, 80);
+        
+        $this->MultiCell(80, 4,  $keywords, 0);
 
-        $this->Write(4, $url, $url);
+        
+
+        $this->Cell(80, 4, $this->get_organizer($i), 0);
+
+        $this->Write(4, $url, $this->json[$i]['sameAs']);
         $this->SetTextColor(0, 0, 0);
         $this->Ln();
     }
@@ -292,15 +296,14 @@ class PDF extends FPDF
 
 $pdf = new PDF('P', 'mm', 'A4');
 
-$op = fopen('events.txt', 'w');
+$op = fopen('../events.txt', 'w');
 fwrite($op, pack("CCC", 0xef, 0xbb, 0xbf));
 
 fwrite($op, $pdf->today);
 fwrite($op, "\n" . str_repeat("=", strlen($pdf->today)) . "\n\n\n");
 
 for ($i = 0; $i < count($pdf->json); $i++)
-{   
-   
+{
     $pdf->make_page($i);
     $content = strip_tags(utf8_decode($pdf->json[$i]['description']));
     $temp = $pdf->wordlimit($content, 25);
@@ -310,18 +313,18 @@ for ($i = 0; $i < count($pdf->json); $i++)
     $pdf->MultiCell(160, 4,  $temp, '', 'L', false);
     $pdf->SetTextColor(50, 50, 50);
     $pdf->Ln(0.5);
-    $pdf->Cell(160, 4, 'READ MORE: ' . $pdf->json[$i]['url'], 'B', 1, 'L', false, $pdf->json[$i]['url']);
+    $pdf->Cell(160, 4, __("LINK", 'event-worker-translations') . ': ' . $pdf->json[$i]['url'], 'B', 1, 'L', false, $pdf->json[$i]['url']);
     $pdf->SetTextColor(0,0,0);
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->Ln(3);
-
+    
     $organizer = ucfirst(__("organizer", 'event-worker-translations'));
     $organizer_address = ucfirst(__("organizer address", 'event-worker-translations'));
     $organizer_phone = ucfirst(__("organizer phone", 'event-worker-translations'));
     $organizer_email = ucfirst(__("organizer e-mail", 'event-worker-translations'));
     $organizer_website = ucfirst(__("organizer website", 'event-worker-translations'));
-    
-    fwrite($op, $pdf->get_title($i) . "\n" . $pdf->get_date($i) . "\n" . __("price", 'event-worker-translations') . ": " . $pdf->get_price($i) . "\xE2\x82\xAc");
+
+    fwrite($op, $pdf->get_title($i) . "\n" . $pdf->get_date($i) . "\n" . ucfirst(__("price", 'event-worker-translations')) . ": " . $pdf->get_price($i) . "\xE2\x82\xAc");
     fwrite($op, "\n" . ucfirst(__("website", 'event-worker-translations')) . ": " . $pdf->json[$i]['sameAs']);
     fwrite($op, "\n" . ucfirst(__("location", 'event-worker-translations')) . ": " . $pdf->json[$i]['location']['name'] . " - " . $pdf->json[$i]['location']['address']);
     fwrite($op, "\n" . $organizer . ": " . $pdf->json[$i]['organizer']['name']);
@@ -334,6 +337,6 @@ for ($i = 0; $i < count($pdf->json); $i++)
 }
 
 fclose($op);
-$pdf->Output("events.pdf", "F");
+$pdf->Output("../events.pdf", "F");
 
 ?>

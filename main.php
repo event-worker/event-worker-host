@@ -26,16 +26,7 @@ class WorkerMainClass
      *
      */
     function __construct()
-    {   
-        /* The activation hook is executed when the plugin is activated. */
-        register_activation_hook(__FILE__,array($this,'event_worker_activation'));
-
-        /* The deactivation hook is executed when the plugin is deactivated */
-        register_deactivation_hook(__FILE__,array($this,'event_worker_deactivation'));
-
-        /* We add a function of our own to the my_hook action. */
-        add_action('my_hook', array($this,'generate_pdf'));
-
+    {
         require_once('lib/redirect.php');
         require_once('lib/core.php');
         require_once('lib/api/wp-slim-framework.php');
@@ -49,9 +40,9 @@ class WorkerMainClass
     }
 
     /**
-     * Add filter variable to filter posts
+     * Add filter variable to filter the posts.
      *
-     * @param TODO
+     * @param string $vars the filter variable.
      *
      */
     function addnew_query_vars($vars)
@@ -61,39 +52,12 @@ class WorkerMainClass
     }
 
     /**
-     * TODO.
+     * Load the transaltions on plugin load.
      *
      */
     function event_worker_init()
     {
         load_plugin_textdomain('event-worker-translations', FALSE, dirname(plugin_basename(__FILE__)).'/lib/languages/');
-    }
-
-    /**
-     * This function is executed when the user activates the plugin
-     *
-     */
-    function event_worker_activation()
-    {
-        wp_schedule_event(time(), 'hourly', 'my_hook');
-    }
-
-    /**
-     * This function is executed when the user deactivates the plugin.
-     *
-     */
-    function event_worker_deactivation()
-    {
-        wp_clear_scheduled_hook('my_hook');
-    }
-
-    /**
-     * This is the function that is executed by the recurring action.
-     *
-     */
-    function generate_pdf()
-    {
-        require('lib/pdf-generator.php');
     }
 }
 new WorkerMainClass();

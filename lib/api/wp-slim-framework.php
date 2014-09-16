@@ -4,7 +4,7 @@ require_once 'Slim/Slim.php';
 
 \Slim\Slim::registerAutoloader();
 
-// No Comment!!
+// TODO.
 add_filter('rewrite_rules_array', function ($rules)
 {
     $options = get_option('event_worker_api_endpoint');
@@ -17,7 +17,7 @@ add_filter('rewrite_rules_array', function ($rules)
     return $rules;
 });
 
-// No Comment!!
+// TODO.
 add_action('init', function ()
 {
     $options = get_option('event_worker_api_endpoint');
