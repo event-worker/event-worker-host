@@ -23,7 +23,7 @@ Activate the plugin from the `Plugins` menu.
 Create an empty page with a slug `events` and set it as a `static front page`.
 ####3.2 Add events page
 Create an empty page and add a shortcode `[worker_form]` to it. This will
-allow the logged in users to post new events without using the admin back-end
-and without the required user roles.
+allow the logged-in users to post new events without using the admin back-end
+and the required user roles.
 ####3.3 Change API endpoint
 Set the new API endpoint if needed in the `Event Worker Options`.
