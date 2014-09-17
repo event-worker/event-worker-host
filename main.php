@@ -12,14 +12,14 @@ Author URI: http://koti.tamk.fi/~c1jkahko/
 /**
  * The init point of the app.
  *
- * Load the needed classes and start the app.
+ * Load the needed classes and translations. Also set the query vars.
  *
  * @package EventWorker
  * @author  Janne Kahkonen <jannekahkonen@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerMainClass
+class WorkerMain
 {
     /** 
      * The constructor.
@@ -42,9 +42,9 @@ class WorkerMainClass
     }
 
     /**
-     * Add filter variable to filter the posts.
+     * Add query variable to filter the posts.
      *
-     * @param string $vars the filter variable.
+     * @param string $vars the query variable.
      *
      */
     function addnew_query_vars($vars)
@@ -54,7 +54,7 @@ class WorkerMainClass
     }
 
     /**
-     * Load the transaltions on plugin load.
+     * Load the translations on plugin load.
      *
      */
     function event_worker_init()
@@ -62,6 +62,6 @@ class WorkerMainClass
         load_plugin_textdomain('event-worker-translations', FALSE, dirname(plugin_basename(__FILE__)).'/lib/languages/');
     }
 }
-new WorkerMainClass();
+new WorkerMain();
 
 ?>

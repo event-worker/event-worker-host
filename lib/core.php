@@ -45,7 +45,7 @@ class WorkerCore
      */
     function worker_plugin_init()
     {   
-        new CommonOptions();
+        new WorkerCommonOptions();
 
         $event_type_labels = array(
             'name' => 'events',

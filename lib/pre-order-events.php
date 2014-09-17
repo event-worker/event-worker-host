@@ -23,9 +23,9 @@ class WorkerPreOrderPosts
     }
 
     /** 
-     * Parse the time to correct format.
+     * Return the parsed time.
      *
-     * @return string $today return the current date and time
+     * @return string
      *
      */
     function parse_the_time()
@@ -40,7 +40,7 @@ class WorkerPreOrderPosts
     /** 
      * Order the posts by the event start date.
      *
-     * @param object $query wordpress query object
+     * @param object $query query object
      *
      * @return object
      */
@@ -48,16 +48,15 @@ class WorkerPreOrderPosts
     {
         if ($query->is_search)
         {
-            //$query->set('post_type', 'events');
             $query->set('post_type', array('post', 'pages', 'events'));
+            return $query;
         }
-        return $query;
     }
 
     /** 
      * Order the posts by the event start date.
      *
-     * @param object $query wordpress query object
+     * @param object $query query object.
      *
      * @return object
      */
@@ -82,7 +81,6 @@ class WorkerPreOrderPosts
                     )
                 );
                 $query->set( 'meta_query', $meta_query );
-                
             }
 
             $args = array(
@@ -104,6 +102,7 @@ class WorkerPreOrderPosts
                 }
             }
         }
+
         if ($query->is_tax() && !$query->is_page())
         {
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

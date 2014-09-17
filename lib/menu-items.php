@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class for adding the menu items.
+ * Class for adding or removing the menu items.
  *
- * Add the the navigation links.
+ * Add or remove the navigation links.
  *
  * @package EventWorker
  * @author  Janne Kahkonen <jannekahkonen@gmail.com>
