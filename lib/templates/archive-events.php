@@ -171,8 +171,15 @@ class WorkerArchiveEventsTemplate
         wp_reset_postdata();
 
         echo '<div style="text-align:center">';
-        echo previous_posts_link('&laquo; ' . __("Previous", 'event-worker-translations')) . ' | ';
-        echo next_posts_link(__("Next", 'event-worker-translations') .' &raquo;') . '</div><br><br>';
+
+        previous_posts_link('&laquo; ' . __('Previous', 'event-worker-translations'));
+
+        if(get_previous_posts_link() && get_next_posts_link())
+        {
+            echo ' | ';
+        }
+
+        next_posts_link(__('Next', 'event-worker-translations') .' &raquo;') . '</div><br><br>';
 
         echo '</div>';
         get_footer();
