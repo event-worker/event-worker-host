@@ -115,7 +115,8 @@ class WorkerCommonOptions
     {   
         $options = get_option('event_worker_api_endpoint');
         //$options['api-endpoint'] = empty($options['api-endpoint']) ? 'v01/api' : $options['api-endpoint'];
-        ?><input size="40" type="text" name="event_worker_api_endpoint[api-endpoint]" value="<?php echo esc_attr($options['api-endpoint']); ?>" /><?php
+        ?><input style="width:70%" type="text" name="event_worker_api_endpoint[api-endpoint]" value="<?php echo esc_attr($options['api-endpoint']); ?>" /><?php
+
     }
 
     /** 

@@ -59,7 +59,7 @@ class WorkerScriptLoaderHelper
         ?>
         <script>
 
-            var l = "<?php echo $location; ?>";
+            var l = "<?php echo esc_attr($location); ?>";
             
             runMap(l);
             jQuery(document).ready(function(jQuery)
@@ -94,7 +94,7 @@ class WorkerScriptLoaderHelper
         ?>
         <script>
 
-            var l = "<?php echo $location; ?>";
+            var l = "<?php echo esc_attr($location); ?>";
             runMap(l);
 
         </script>
