@@ -228,7 +228,7 @@ class WorkerSubmitShortcode
         $out .= '<input type="submit" id="worker_submit" name="worker_submit" value="' . mb_strtoupper(__('submit event', 'event-worker-translations')) . '"><br><br><br>';
        
         $wslh = new WorkerScriptLoaderHelper();
-        $wslh->getLocation();
+        $wslh->getMap(null);
 
         $out .= '</form></div>';
 
