@@ -32,10 +32,10 @@ class WorkerTemplateLoader
      *
      */
     function archive_event_template()
-    {   
+    {
         $dir = dirname( __FILE__ ) . '/../templates/archive-events.php';
 
-        if ( 
+        if (
              (!is_page() && is_post_type_archive("events")) ||
              (is_tax() && !is_page()) ||
              //(is_search()) ||

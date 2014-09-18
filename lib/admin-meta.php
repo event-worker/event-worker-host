@@ -248,7 +248,7 @@ class WorkerAdminMetaBoxes
             $worker_event_start_date = $_POST['AdminEventStartDate'];
             $worker_event_end_date = $_POST['AdminEventEndDate'];
 
-            $worker_event_location = " ";
+            $worker_event_location = "-";
            
             if (trim($_POST['worker_event_location']) !== "")
             {
