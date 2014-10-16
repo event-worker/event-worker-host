@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerSubmitShortcode
+class WorkerHostSubmitShortcode
 {
     /** 
      * The constructor.
@@ -227,7 +227,7 @@ class WorkerSubmitShortcode
         $out .= wp_nonce_field('worker_form_create_event', 'worker_form_create_event_submitted');
         $out .= '<input type="submit" id="worker_submit" name="worker_submit" value="' . mb_strtoupper(__('submit event', 'event-worker-translations')) . '"><br><br><br>';
        
-        $wslh = new WorkerScriptLoaderHelper();
+        $wslh = new WorkerHostScriptLoaderHelper();
         $wslh->getMap(null);
 
         $out .= '</form></div>';
@@ -315,6 +315,6 @@ class WorkerSubmitShortcode
         }
     }
 }
-new WorkerSubmitShortcode();
+new WorkerHostSubmitShortcode();
 
 ?>

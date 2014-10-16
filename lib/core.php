@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerCore
+class WorkerHostCore
 {
     /** 
      * The constructor.
@@ -44,7 +44,7 @@ class WorkerCore
      */
     function worker_plugin_init()
     {   
-        new WorkerCommonOptions();
+        new WorkerHostCommonOptions();
 
         $event_type_labels = array(
             'name' => 'events',
@@ -113,6 +113,6 @@ class WorkerCore
         }
     }
 }
-new WorkerCore();
+new WorkerHostCore();
 
 ?>

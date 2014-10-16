@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerScriptLoaderHelper
+class WorkerHostScriptLoaderHelper
 {
     /** 
      * The constructor.
@@ -112,7 +112,7 @@ class WorkerScriptLoaderHelper
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerMainScriptLoader
+class WorkerHostMainScriptLoader
 {
     /** 
      * The constructor.
@@ -171,6 +171,6 @@ class WorkerMainScriptLoader
         }
     }
 }
-new WorkerMainScriptLoader();
+new WorkerHostMainScriptLoader();
 
 ?>

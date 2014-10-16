@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerTemplateLoader
+class WorkerHostTemplateLoader
 {
     /** 
      * The constructor.
@@ -41,6 +41,6 @@ class WorkerTemplateLoader
         return $page_template;
     }
 }
-new WorkerTemplateLoader();
+new WorkerHostTemplateLoader();
 
 ?>

@@ -19,7 +19,7 @@ Author URI: http://koti.tamk.fi/~c1jkahko/
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerMain
+class WorkerHostMain
 {
     /** 
      * The constructor.
@@ -73,6 +73,6 @@ class WorkerMain
         load_plugin_textdomain('event-worker-translations', FALSE, dirname(plugin_basename(__FILE__)).'/lib/languages/');
     }
 }
-new WorkerMain();
+new WorkerHostMain();
 
 ?>

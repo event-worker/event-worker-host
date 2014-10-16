@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerAdminMetaBoxes
+class WorkerHostAdminMetaBoxes
 {
     /** 
      * The constructor.
@@ -68,7 +68,7 @@ class WorkerAdminMetaBoxes
 
         echo '<div id="googleMap" style="width: 100%; height: 300px"></div>';
 
-        $wslh = new WorkerScriptLoaderHelper();
+        $wslh = new WorkerHostScriptLoaderHelper();
         $wslh->getMap($l);
     }
 
@@ -328,6 +328,6 @@ class WorkerAdminMetaBoxes
         }
     }
 }
-new WorkerAdminMetaBoxes();
+new WorkerHostAdminMetaBoxes();
 
 ?>

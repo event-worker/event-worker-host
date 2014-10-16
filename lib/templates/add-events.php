@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerAddEventsPage
+class WorkerHostAddEventsPage
 {
     /** 
      * The constructor.
@@ -30,6 +30,6 @@ class WorkerAddEventsPage
         get_footer();
     }
 }
-new WorkerAddEventsPage();
+new WorkerHostAddEventsPage();
 
 ?>

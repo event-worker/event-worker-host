@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php  GNU Public License
  *
  */
-class WorkerMenuItems
+class WorkerHostMenuItems
 {
     /** 
      * The constructor.
@@ -67,6 +67,6 @@ class WorkerMenuItems
         return $exclude_array;
     }
 }
-new WorkerMenuItems();
+new WorkerHostMenuItems();
 
 ?>
