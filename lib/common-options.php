@@ -17,7 +17,7 @@ class WorkerCommonOptions
      *
      */
     function __construct()
-    {   
+    {
         $arr = array('api-endpoint' => 'v01/api');
 
         add_action('admin_menu', array($this, 'add_plugin_settings_menu'));
@@ -34,9 +34,9 @@ class WorkerCommonOptions
     function add_plugin_settings_menu()
     {
         add_options_page('Event Worker',
-                         __('Event Worker Options', 'event-worker-translations'),
+                         __('Worker Host Options', 'event-worker-translations'),
                          'manage_options',
-                         'event-worker',
+                         'event-worker-host',
                          array($this, 'create_plugin_settings_page'));
     }
 
@@ -56,9 +56,9 @@ class WorkerCommonOptions
             <form method="post" action="options.php">
 
             <?php
-                settings_fields('settings-group');  // This prints out all hidden setting fields
+                settings_fields('host-settings-group');  // This prints out all hidden setting fields
 
-                do_settings_sections('event-worker');
+                do_settings_sections('event-worker-host');
                 submit_button(__('Save Changes', 'event-worker-translations'));
             ?>
             </form>
@@ -82,18 +82,18 @@ class WorkerCommonOptions
             'api-endpoint-settings-section',
             __('API Options', 'event-worker-translations'),
             array($this, 'print_api_endpoint_settings_section_info'),
-            'event-worker'
+            'event-worker-host'
         );
 
         add_settings_field(
             'api-endpoint', 
             __('Endpoint', 'event-worker-translations'),
             array($this, 'create_input_api_endpoint'), 
-            'event-worker', 
+            'event-worker-host', 
             'api-endpoint-settings-section'
         );
 
-        register_setting('settings-group',
+        register_setting('host-settings-group',
                          'event_worker_api_endpoint',
                          array($this, 'plugin_api_endpoint_settings_validate'));
     }

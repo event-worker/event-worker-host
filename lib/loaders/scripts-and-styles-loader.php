@@ -100,45 +100,6 @@ class WorkerScriptLoaderHelper
         </script>
         <?php
     }
-
-    /** 
-     * Append the styles.
-     *
-     */
-    function append_styles()
-    {
-
-        ?>
-        <script>
-
-        function rgb2hex(rgb)
-        {
-            if(rgb.search("rgb") == -1)
-            {
-                return rgb;
-            }
-            else
-            {
-                rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
-
-                function hex(x)
-                {
-                    return ("0" + parseInt(x).toString(16)).slice(-2);
-                }
-
-                return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
-            }
-        }
-
-        jQuery(function()
-        {
-            var styles = jQuery("#common_wrapper a").css( "color" );
-            jQuery(".today").css("color", rgb2hex(styles));
-        });
-        
-        </script>
-        <?php
-    }
 }
 
 /**
