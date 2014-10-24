@@ -216,7 +216,7 @@ class WorkerHostAdminMetaBoxes
      *
      */
     function custom_save($post_id)
-    {   
+    {
         // Check its not an auto save.
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
         {
@@ -224,7 +224,10 @@ class WorkerHostAdminMetaBoxes
         }
      
         // Check your data has been sent. This helps verify that we intend to process our metabox.
-        if (!isset($_POST['event_worker_website_nonce']) &&
+        if (!isset($_POST['event_worker_map_nonce']) &&
+            !isset($_POST['event_worker_date_nonce']) &&
+            !isset($_POST['event_worker_price_nonce']) &&
+            !isset($_POST['event_worker_website_nonce']) &&
             !isset($_POST['event_worker_organizer_nonce']))
         {
             return;
@@ -243,20 +246,60 @@ class WorkerHostAdminMetaBoxes
         check_ajax_referer('event_worker_action_xyz_' . $post_id, 'event_worker_website_nonce');
         check_ajax_referer('event_worker_action_xyz_' . $post_id, 'event_worker_organizer_nonce');
 
+        if (get_the_title($post_id) == "")
+        {
+            wp_update_post(array (
+                                  'ID'            => $post_id, 
+                                  'post_title'    => "-"
+            ));
+        }
+
+        if (get_post_field('post_content', $post_id) == "")
+        {
+            wp_update_post(array (
+                                  'ID'            => $post_id,
+                                  'post_content' => '-'
+            ));
+        }
+
         if(isset($_POST['AdminEventStartDate']) && isset($_POST['AdminEventEndDate']))
         {
             $worker_event_start_date = $_POST['AdminEventStartDate'];
             $worker_event_end_date = $_POST['AdminEventEndDate'];
 
+            if ($_POST['AdminEventStartDate'] == "")
+            {
+                date_default_timezone_set('Europe/Helsinki');
+                $date = new DateTime('NOW');
+                $date = $date->format('d.m.Y H:i');
+
+                $worker_event_start_date = $date;
+            }
+
+            if ($_POST['AdminEventEndDate'] == "")
+            {
+                date_default_timezone_set('Europe/Helsinki');
+                $date = new DateTime('NOW');
+                $date->add(new DateInterval('PT1H'));
+                $date = $date->format('d.m.Y H:i');
+
+                $worker_event_end_date = $date;
+            }
+
             $worker_event_location = "-";
+            $worker_event_location_name = "-";
+            $worker_event_geolocation = '(null, null)';
            
             if (trim($_POST['worker_event_location']) !== "")
             {
-                 $worker_event_location = trim($_POST['worker_event_location']);
+                $worker_event_location = trim($_POST['worker_event_location']);
+                $worker_event_geolocation = trim($_POST['worker_event_geolocation']);
             }
-           
-            $worker_event_location_name = trim($_POST['worker_event_location_name']);
-            $worker_event_geolocation = trim($_POST['worker_event_geolocation']);
+
+            if (trim($_POST['worker_event_location_name']) !== "")
+            {
+                $worker_event_location_name = trim($_POST['worker_event_location_name']);
+            }
 
             $worker_event_price = trim($_POST['AdminEventPrice']);
 
@@ -325,6 +368,16 @@ class WorkerHostAdminMetaBoxes
             update_post_meta($post_id,
                              'event_end_order',
                              date_format($we, 'YmdHi'));
+
+            $key = 'event_version';
+            $themeta = get_post_meta($post_id, $key, TRUE);
+
+            if($themeta == '')
+            {
+                update_post_meta($post_id,
+                                'event_version',
+                                'event_worker_' . time());
+            }
         }
     }
 }
