@@ -369,6 +369,13 @@ class WorkerHostAdminMetaBoxes
                              'event_end_order',
                              date_format($we, 'YmdHi'));
 
+            update_post_meta($post_id,
+                             'event_modified',
+                             get_post_modified_time('Y-m-d H:i:s', false, $post_id));
+
+            //var_dump(get_post_modified_time('Y-m-d H:i:s', false, $post_id));
+            //die();
+
             $key = 'event_version';
             $themeta = get_post_meta($post_id, $key, TRUE);
 
