@@ -19,7 +19,7 @@ class WorkerHostPreOrderPosts
     function __construct()
     {
         add_filter('pre_get_posts', array($this,'custom_pre_get_posts'));
-        add_filter('pre_get_posts', array($this, 'search_filter'));
+        //add_filter('pre_get_posts', array($this, 'search_filter'));
     }
 
     /** 
@@ -38,7 +38,7 @@ class WorkerHostPreOrderPosts
     }
 
     /** 
-     * Order the posts by the event start date.
+     * TODO.
      *
      * @param object $query query object
      *
@@ -70,18 +70,6 @@ class WorkerHostPreOrderPosts
             $query->set('meta_key', 'event_start_order');
             $query->set('paged', $paged);
             $query->set('order', 'ASC');
-            if (isset($_GET['filter']) && $_GET['filter'] === 'today')
-            {
-                $meta_query = array(
-                    array(
-                        'key' => 'event_start_order',
-                        'type' => 'numeric',
-                        'value' => $this->parse_the_time(),
-                        'compare' => '<='
-                    )
-                );
-                $query->set( 'meta_query', $meta_query );
-            }
 
             $args = array(
                 'post_type'   => 'events',
@@ -100,52 +88,6 @@ class WorkerHostPreOrderPosts
                     $post = array('ID' => $post->ID, 'post_status' => 'draft');
                     wp_update_post($post);
                 }
-            }
-        }
-
-        if ($query->is_tax() && !$query->is_page())
-        {
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $query->set('post_type', 'events');
-            $query->set('orderby', 'meta_value_num');
-            $query->set('meta_key', 'event_start_order');
-            $query->set('paged', $paged);
-            $query->set('order', 'ASC');
-
-            if (isset($_GET['filter']) && $_GET['filter'] === 'today')
-            {
-                $meta_query = array(
-                    array(
-                        'key' => 'event_start_order',
-                        'type' => 'numeric',
-                        'value' => $this->parse_the_time(),
-                        'compare' => '<='
-                    )
-                );
-                $query->set( 'meta_query', $meta_query );
-                
-            }
-        }
-        if ($query->is_author())
-        {
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $query->set('post_type', 'events');
-            $query->set('orderby', 'meta_value_num');
-            $query->set('meta_key', 'event_start_order');
-            $query->set('paged', $paged);
-            $query->set('order', 'ASC');
-
-            if (isset($_GET['filter']) && $_GET['filter'] === 'today')
-            {
-                $meta_query = array(
-                    array(
-                        'key' => 'event_start_order',
-                        'type' => 'numeric',
-                        'value' => $this->parse_the_time(),
-                        'compare' => '<='
-                    )
-                );
-                $query->set( 'meta_query', $meta_query );
             }
         }
 
