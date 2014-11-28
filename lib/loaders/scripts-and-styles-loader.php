@@ -40,7 +40,7 @@ class WorkerHostScriptLoaderHelper
                       "<?php echo ucfirst(__('June', 'event-worker-translations')); ?>",
                       "<?php echo ucfirst(__('July', 'event-worker-translations')); ?>",
                       "<?php echo ucfirst(__('August', 'event-worker-translations')); ?>",
-                      "<?php echo ucfirst(__('Septemper', 'event-worker-translations')); ?>",
+                      "<?php echo ucfirst(__('September', 'event-worker-translations')); ?>",
                       "<?php echo ucfirst(__('October', 'event-worker-translations')); ?>",
                       "<?php echo ucfirst(__('November', 'event-worker-translations')); ?>",
                       "<?php echo ucfirst(__('December', 'event-worker-translations')); ?>",];
