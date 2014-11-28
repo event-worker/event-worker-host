@@ -137,7 +137,7 @@ class WorkerHostAdminMetaBoxes
         $count = count(get_post_meta(get_the_ID(), 'event_price'));
 
         if ($count !== 0)
-        {            
+        {
             $price = get_post_meta(get_the_ID(), 'event_price')[0];
         }
         else
@@ -326,9 +326,12 @@ class WorkerHostAdminMetaBoxes
                              'event_geolocation',
                              sanitize_text_field($worker_event_geolocation));
 
-            update_post_meta($post_id,
-                             'event_price',
-                             sanitize_text_field(floatval($worker_event_price)));
+            if ($worker_event_price[0] != '-' || $worker_event_price[0] != '.')
+            {
+                update_post_meta($post_id,
+                                 'event_price',
+                                 sanitize_text_field(floatval($worker_event_price)));
+            }
 
             update_post_meta($post_id,
                              'event_website',
@@ -379,7 +382,7 @@ class WorkerHostAdminMetaBoxes
             $key = 'event_version';
             $themeta = get_post_meta($post_id, $key, TRUE);
 
-            if($themeta == '')
+            if ($themeta == '')
             {
                 update_post_meta($post_id,
                                 'event_version',

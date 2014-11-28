@@ -107,13 +107,13 @@ class WorkerHostSubmitShortcode
                     $ws = new DateTime($worker_event_start_date);
                     $we = new DateTime($worker_event_end_date);
 
-                    update_post_meta($event_id,
-                                     'event_start_order',
-                                     $ws);
+                    update_post_meta($post_id,
+                             'event_start_order',
+                             date_format($ws, 'YmdHi'));
 
-                    update_post_meta($event_id,
-                                     'event_end_order',
-                                     $we);
+                    update_post_meta($post_id,
+                             'event_end_order',
+                             date_format($we, 'YmdHi'));
 
                     update_post_meta($event_id,
                                      'event_location',
