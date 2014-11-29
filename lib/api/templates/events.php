@@ -165,6 +165,8 @@ function get_events()
         $organizer_name = $meta["event_organizer"][0];
         $data = unserialize($meta["event_organizer_data"][0]);
 
+        $status = $meta["event_status"][0];
+
         //$uri = get_the_api_uri($post->post_name);
 
         $holder = null;
@@ -175,17 +177,23 @@ function get_events()
             $holder[] = $term->name; 
         }
 
-        $events[] = array('@id'=>$post->post_name,
-                          '@type'=>'Event',
-                          'version'=>$meta["event_version"][0], // fix
+        $events[] = array('@id' => $post->post_name,
+                          '@type' => 'Event',
+                          'eventStatus' => $status,
+                          'version' => $meta["event_version"][0], // fix
                           'name' => $post->post_title,
-                          'description'=>$post->post_content,
-                          'startDate'=>$start_date->format('Y-m-d H:i:s'),
-                          'endDate'=>$end_date->format('Y-m-d H:i:s'),
-                          'sameAs'=>$url,
-                          'url'=>get_permalink($post->ID),
-                          'keywords'=>array('@type'=> 'CreativeWork', 'keywords'=>$holder), // fix
-                          'Date'=>array('@type'=> 'date', 'dateModified'=>$post->post_modified), // fix
+                          'description' => $post->post_content,
+                          'startDate' => $start_date->format('Y-m-d H:i:s'),
+                          'endDate' => $end_date->format('Y-m-d H:i:s'),
+                          'sameAs' => $url,
+                          'url' => get_permalink($post->ID),
+
+                          'workPerformed'=>array('@type'=> 'CreativeWork',
+                                                 'keywords'=>$holder,
+                                                 'dateModified'=>$post->post_modified), // fix
+
+                          //'Date'=>array('@type'=> 'date', 'dateModified'=>$post->post_modified), // fix
+
                           'offers'=>array('@type'=> 'Offer', 'price'=>$price),
                           'organizer'=>array('@type'=> 'Organization',
                                              'name'=>$organizer_name,

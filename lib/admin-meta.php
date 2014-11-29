@@ -12,7 +12,7 @@
  */
 class WorkerHostAdminMetaBoxes
 {
-    /** 
+    /**
      * The constructor.
      *
      */
@@ -22,9 +22,9 @@ class WorkerHostAdminMetaBoxes
         add_action('add_meta_boxes', array($this, 'add_my_meta_boxes'));
     }
 
-    /** 
+    /**
      * Add the fields.
-     *     
+     *
      */
     function add_my_meta_boxes()
     {
@@ -35,9 +35,10 @@ class WorkerHostAdminMetaBoxes
         add_meta_box('map-meta-box', ucfirst(__( 'location', 'event-worker-translations' )), array($this, 'show_map_meta_box'), 'events', 'normal', 'high');
     }
 
-    /** 
+
+    /**
      * Show the map and the location fields.
-     *     
+     *
      */
     function show_map_meta_box()
     {
@@ -58,7 +59,7 @@ class WorkerHostAdminMetaBoxes
             $n =  null;
         }
 
-        echo '<input style="width:100%;" placeholder="' . ucfirst(__( 'name', 'event-worker-translations' )) . '"' . 
+        echo '<input style="width:100%;" placeholder="' . ucfirst(__( 'name', 'event-worker-translations' )) . '"' .
              'name="worker_event_location_name" value="' . esc_attr($n) . '"/><br/>';
 
         echo '<input style="width:100%;" id="worker_event_location" placeholder="' . ucfirst(__( 'address', 'event-worker-translations' )) . '"' .
@@ -72,7 +73,7 @@ class WorkerHostAdminMetaBoxes
         $wslh->getMap($l);
     }
 
-    /** 
+    /**
      * Explode the date.
      *
      * @param string $date the date.
@@ -88,12 +89,12 @@ class WorkerHostAdminMetaBoxes
         return $date;
     }
 
-    /** 
+    /**
      * Show the date fields.
-     *     
+     *
      */
     function show_date_meta_box()
-    {   
+    {
         $name = 'event_worker_date_nonce'; // Make sure this is unique, prefix it with your plug-in/theme name
         $action = 'event_worker_action_xyz_' . get_the_ID(); // This is the nonce action
 
@@ -116,19 +117,44 @@ class WorkerHostAdminMetaBoxes
             $end = null;
         }
 
-        echo '<label for="AdminEventStartDate">' . ucfirst(__( 'start date', 'event-worker-translations' )) . '</label><br/>';   
-        echo '<input class="eventdate" id="AdminEventStartDate" name="AdminEventStartDate" value="' . esc_attr($start) . '"/><br/>';
+        $c = "unchecked";
+        $status = '<font color="green">' . strtoupper(__('active', 'event-worker-translations')) . '</font>' ;
+
+        $count3 = count(get_post_meta(get_the_ID(), 'event_status'));
+
+        if ($count3 != 0)
+        {
+            $options = get_post_meta(get_the_ID(), 'event_status')[0];
+
+            if ($options === "http://schema.org/EventCancelled")
+            {
+                $status = '<font color="red">' . strtoupper(__('cancelled', 'event-worker-translations')) . '</font>' ;
+                $c = "checked";
+            }
+            if ($options === "http://schema.org/EventScheduled")
+            {
+                $status = '<font color="green">' . strtoupper(__('active', 'event-worker-translations')) . '</font>' ;
+                $c = "unchecked";
+            }
+        }
+
+        echo '<input type="checkbox" name="meta-checkbox" id="meta-checkbox" value="1"' . $c . '/>';
+        echo '<label for="meta-checkbox">' . ucfirst(__( 'cancel event', 'event-worker-translations' )) . ' | ' . $status . '</label>';
+
+        echo '<br><hr>';
+        echo '<label for="AdminEventStartDate">' . ucfirst(__( 'start date', 'event-worker-translations' )) . '</label><br/>';
+        echo '<input style="width:100%" class="eventdate" id="AdminEventStartDate" name="AdminEventStartDate" value="' . esc_attr($start) . '"/><br/>';
 
         echo '<label for="AdminEventEndDate">' . ucfirst(__( 'end date', 'event-worker-translations' )) . '</label><br/>';
-        echo '<input class="eventdate" id="AdminEventEndDate" name="AdminEventEndDate" value="' . esc_attr($end) . '"/><br/>';
+        echo '<input style="width:100%" class="eventdate" id="AdminEventEndDate" name="AdminEventEndDate" value="' . esc_attr($end) . '"/><br/>';
     }
 
-    /** 
+    /**
      * Show the price field.
-     *     
+     *
      */
     function show_price_meta_box()
-    {   
+    {
         $name = 'event_worker_price_nonce'; // Make sure this is unique, prefix it with your plug-in/theme name
         $action = 'event_worker_action_xyz_' . get_the_ID(); // This is the nonce action
 
@@ -147,9 +173,9 @@ class WorkerHostAdminMetaBoxes
         echo '<input type="text" class="eventprice" id="AdminEventPrice" name="AdminEventPrice" onkeypress="return isNumberKey(event)" value="' . esc_attr($price) . '"/><br/>';
     }
 
-    /** 
+    /**
      * Show the website field.
-     *     
+     *
      */
     function show_website_meta_box()
     {
@@ -161,7 +187,7 @@ class WorkerHostAdminMetaBoxes
         $count = count(get_post_meta(get_the_ID(), 'event_website'));
 
         if ($count !== 0)
-        {            
+        {
             $website = get_post_meta(get_the_ID(), 'event_website')[0];
         }
         else
@@ -170,15 +196,15 @@ class WorkerHostAdminMetaBoxes
         }
 
         echo '<label for="AdminEventWebsite">URL</label><br/>';
-        echo '<input <input type="url" class="eventwebsite" id="AdminEventWebsite" name="AdminEventWebsite" value="' . esc_attr($website) . '"/><br/>';
+        echo '<input style="width:100%" type="url" class="eventwebsite" id="AdminEventWebsite" name="AdminEventWebsite" value="' . esc_attr($website) . '"/><br/>';
     }
 
-    /** 
+    /**
      * Show the organizer field.
-     *     
+     *
      */
     function show_organizer_meta_box()
-    {   
+    {
         $name = 'event_worker_organizer_nonce'; // Make sure this is unique, prefix it with your plug-in/theme name
         $action = 'event_worker_action_xyz_' . get_the_ID(); // This is the nonce action
 
@@ -186,7 +212,7 @@ class WorkerHostAdminMetaBoxes
         $count = count(get_post_meta(get_the_ID(), 'event_organizer'));
 
         if ($count !== 0)
-        {            
+        {
             $organizer = get_post_meta(get_the_ID(), 'event_organizer')[0];
             $organizer_address = get_post_meta(get_the_ID(), 'event_organizer_data')[0]['address'];
             $organizer_phone = get_post_meta(get_the_ID(), 'event_organizer_data')[0]['phone'];
@@ -209,7 +235,7 @@ class WorkerHostAdminMetaBoxes
         echo '<input type="text" id="organizer_website" name="organizer_website" placeholder="' . ucfirst(__( 'website', 'event-worker-translations' )) . '" value="' .  esc_attr($organizer_website) . '" style="width: 100%;"/>';
     }
 
-    /** 
+    /**
      * Save the data.
      *
      * @param int $post_id the post id.
@@ -222,7 +248,7 @@ class WorkerHostAdminMetaBoxes
         {
             return;
         }
-     
+
         // Check your data has been sent. This helps verify that we intend to process our metabox.
         if (!isset($_POST['event_worker_map_nonce']) &&
             !isset($_POST['event_worker_date_nonce']) &&
@@ -232,13 +258,13 @@ class WorkerHostAdminMetaBoxes
         {
             return;
         }
-     
+
         // Check permissions.
         if (!current_user_can('edit_post', $post_id))
         {
             return;
         }
-     
+
         // Check the nonces.
         check_ajax_referer('event_worker_action_xyz_' . $post_id, 'event_worker_map_nonce');
         check_ajax_referer('event_worker_action_xyz_' . $post_id, 'event_worker_date_nonce');
@@ -249,7 +275,7 @@ class WorkerHostAdminMetaBoxes
         if (get_the_title($post_id) == "")
         {
             wp_update_post(array (
-                                  'ID'            => $post_id, 
+                                  'ID'            => $post_id,
                                   'post_title'    => "-"
             ));
         }
@@ -289,7 +315,7 @@ class WorkerHostAdminMetaBoxes
             $worker_event_location = "-";
             $worker_event_location_name = "-";
             $worker_event_geolocation = '(null, null)';
-           
+
             if (trim($_POST['worker_event_location']) !== "")
             {
                 $worker_event_location = trim($_POST['worker_event_location']);
@@ -388,6 +414,22 @@ class WorkerHostAdminMetaBoxes
                                 'event_version',
                                 'event_worker_' . time());
             }
+
+            if (isset($_POST['meta-checkbox']))
+            {
+                update_post_meta($post_id,
+                                'event_status',
+                                "http://schema.org/EventCancelled");
+
+            }
+            else
+            {
+                update_post_meta($post_id,
+                                'event_status',
+                                "http://schema.org/EventScheduled");
+            }
+
+
         }
     }
 }
