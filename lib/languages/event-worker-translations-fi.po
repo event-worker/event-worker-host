@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Event Worker Host 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-16 11:39+0200\n"
-"PO-Revision-Date: 2014-10-16 11:39+0200\n"
+"POT-Creation-Date: 2014-11-29 15:53+0200\n"
+"PO-Revision-Date: 2014-11-29 15:53+0200\n"
 "Last-Translator: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language-Team: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "organizer"
 msgstr "järjestäjä"
 
-#: ../admin-meta.php:32 ../admin-meta.php:209
+#: ../admin-meta.php:32 ../admin-meta.php:235
 #: ../shortcodes/submit-event.php:201 ../shortcodes/submit-event.php:216
 msgid "website"
 msgstr "kotisivu"
@@ -44,30 +44,42 @@ msgstr "tapahtuman päivämäärä"
 msgid "location"
 msgstr "sijainti"
 
-#: ../admin-meta.php:61 ../admin-meta.php:205
+#: ../admin-meta.php:62 ../admin-meta.php:231
 #: ../shortcodes/submit-event.php:182 ../shortcodes/submit-event.php:212
 #: ../shortcodes/submit-event.php:221
 msgid "name"
 msgstr "nimi"
 
-#: ../admin-meta.php:64 ../admin-meta.php:206
+#: ../admin-meta.php:65 ../admin-meta.php:232
 #: ../shortcodes/submit-event.php:213 ../shortcodes/submit-event.php:221
 msgid "address"
 msgstr "osoite"
 
-#: ../admin-meta.php:119 ../shortcodes/submit-event.php:186
+#: ../admin-meta.php:121 ../admin-meta.php:136
+msgid "active"
+msgstr "aktiivinen"
+
+#: ../admin-meta.php:131
+msgid "cancelled"
+msgstr "peruttu"
+
+#: ../admin-meta.php:142
+msgid "cancel event"
+msgstr "Peru tapahtuma"
+
+#: ../admin-meta.php:145 ../shortcodes/submit-event.php:186
 msgid "start date"
 msgstr "alkupäivä"
 
-#: ../admin-meta.php:122 ../shortcodes/submit-event.php:190
+#: ../admin-meta.php:148 ../shortcodes/submit-event.php:190
 msgid "end date"
 msgstr "loppupäivä"
 
-#: ../admin-meta.php:207 ../shortcodes/submit-event.php:214
+#: ../admin-meta.php:233 ../shortcodes/submit-event.php:214
 msgid "phone"
 msgstr "puhelin"
 
-#: ../admin-meta.php:208 ../shortcodes/submit-event.php:215
+#: ../admin-meta.php:234 ../shortcodes/submit-event.php:215
 msgid "e-mail"
 msgstr "sähköposti"
 
@@ -244,7 +256,7 @@ msgid "August"
 msgstr "Elokuu"
 
 #: ../loaders/scripts-and-styles-loader.php:43
-msgid "Septemper"
+msgid "September"
 msgstr "Syyskuu"
 
 #: ../loaders/scripts-and-styles-loader.php:44
