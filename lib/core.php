@@ -25,6 +25,9 @@ class WorkerHostCore
         require_once('shortcodes/submit-event.php');
 
         add_action('init', array($this, 'worker_plugin_init'));
+        
+        add_filter('manage_edit-events_columns', array($this, 'add_new_events_columns'));
+        add_action('manage_events_posts_custom_column', array($this, 'manage_events_columns'), 10, 2);
     }
 
     /** 
@@ -36,6 +39,52 @@ class WorkerHostCore
     function category_slug()
     {
         return 'event-category';
+    }
+
+    /**
+     * TODO.
+     *
+     * TODO.
+     *
+     */
+    function add_new_events_columns($columns)
+    {
+        $columns = array(
+            //'cb' => '<input type="checkbox" />',
+            'title'    => __('Event', 'event-worker-translations'),
+            'event_status' => ucfirst(__('status', 'event-worker-translations')),
+            'event_duration'    => ucfirst(__('duration', 'event-worker-translations')),
+            'date'     => ucfirst(__('added', 'event-worker-translations'))
+        );
+
+        return $columns;
+    }
+
+    /**
+     * TODO.
+     *
+     * TODO.
+     *
+     */
+    function manage_events_columns($column, $post_id)
+    {
+        if ($column == "event_status")
+        {
+            if (get_post_meta($post_id, 'event_status')[0] == "http://schema.org/EventCancelled")
+            {
+                $status = '<font color="red">' . strtoupper(__('cancelled', 'event-worker-translations')) . '</font>' ;
+                echo $status;
+            }
+            else
+            {
+                $status = '<font color="green">' . strtoupper(__('active', 'event-worker-translations')) . '</font>' ;
+                echo $status;
+            }
+        }
+        if ($column == "event_duration")
+        {
+            echo get_post_meta($post_id, 'event_start_date')[0] . '<br>' . get_post_meta($post_id, 'event_end_date')[0];
+        }
     }
 
     /** 

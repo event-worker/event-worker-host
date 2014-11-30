@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Event Worker Host 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-29 15:53+0200\n"
-"PO-Revision-Date: 2014-11-29 15:53+0200\n"
+"POT-Creation-Date: 2014-11-30 10:32+0200\n"
+"PO-Revision-Date: 2014-11-30 10:32+0200\n"
 "Last-Translator: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language-Team: Janne Kähkönen <jannekahkonen@gmail.com>\n"
 "Language: fi\n"
@@ -23,63 +23,63 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../admin-meta.php:31 ../shortcodes/submit-event.php:210
+#: ../admin-meta.php:34 ../shortcodes/submit-event.php:210
 msgid "organizer"
 msgstr "järjestäjä"
 
-#: ../admin-meta.php:32 ../admin-meta.php:235
+#: ../admin-meta.php:35 ../admin-meta.php:238
 #: ../shortcodes/submit-event.php:201 ../shortcodes/submit-event.php:216
 msgid "website"
 msgstr "kotisivu"
 
-#: ../admin-meta.php:33 ../shortcodes/submit-event.php:194
+#: ../admin-meta.php:36 ../shortcodes/submit-event.php:194
 msgid "price"
 msgstr "hinta"
 
-#: ../admin-meta.php:34
+#: ../admin-meta.php:37
 msgid "event date"
 msgstr "tapahtuman päivämäärä"
 
-#: ../admin-meta.php:35 ../shortcodes/submit-event.php:220
+#: ../admin-meta.php:38 ../shortcodes/submit-event.php:220
 msgid "location"
 msgstr "sijainti"
 
-#: ../admin-meta.php:62 ../admin-meta.php:231
+#: ../admin-meta.php:65 ../admin-meta.php:234
 #: ../shortcodes/submit-event.php:182 ../shortcodes/submit-event.php:212
 #: ../shortcodes/submit-event.php:221
 msgid "name"
 msgstr "nimi"
 
-#: ../admin-meta.php:65 ../admin-meta.php:232
+#: ../admin-meta.php:68 ../admin-meta.php:235
 #: ../shortcodes/submit-event.php:213 ../shortcodes/submit-event.php:221
 msgid "address"
 msgstr "osoite"
 
-#: ../admin-meta.php:121 ../admin-meta.php:136
+#: ../admin-meta.php:124 ../admin-meta.php:139 ../core.php:80
 msgid "active"
 msgstr "aktiivinen"
 
-#: ../admin-meta.php:131
+#: ../admin-meta.php:134 ../core.php:75
 msgid "cancelled"
 msgstr "peruttu"
 
-#: ../admin-meta.php:142
+#: ../admin-meta.php:145
 msgid "cancel event"
 msgstr "Peru tapahtuma"
 
-#: ../admin-meta.php:145 ../shortcodes/submit-event.php:186
+#: ../admin-meta.php:148 ../shortcodes/submit-event.php:186
 msgid "start date"
 msgstr "alkupäivä"
 
-#: ../admin-meta.php:148 ../shortcodes/submit-event.php:190
+#: ../admin-meta.php:151 ../shortcodes/submit-event.php:190
 msgid "end date"
 msgstr "loppupäivä"
 
-#: ../admin-meta.php:233 ../shortcodes/submit-event.php:214
+#: ../admin-meta.php:236 ../shortcodes/submit-event.php:214
 msgid "phone"
 msgstr "puhelin"
 
-#: ../admin-meta.php:234 ../shortcodes/submit-event.php:215
+#: ../admin-meta.php:237 ../shortcodes/submit-event.php:215
 msgid "e-mail"
 msgstr "sähköposti"
 
@@ -107,79 +107,91 @@ msgstr "Polku"
 msgid "Set the API endpoint"
 msgstr "Aseta rajapinnan (API) polku"
 
-#: ../core.php:51
+#: ../core.php:54 ../core.php:100
 msgid "Event"
 msgstr "Tapahtuma"
 
-#: ../core.php:52 ../core.php:53 ../core.php:55
+#: ../core.php:55
+msgid "status"
+msgstr "tila"
+
+#: ../core.php:56
+msgid "duration"
+msgstr "kesto"
+
+#: ../core.php:57
+msgid "added"
+msgstr "lisätty"
+
+#: ../core.php:101 ../core.php:102 ../core.php:104
 msgid "Add new event"
 msgstr "Lisää uusi tapahtuma"
 
-#: ../core.php:54
+#: ../core.php:103
 msgid "Edit event"
 msgstr "Muokkaa tapahtumaa"
 
-#: ../core.php:56
+#: ../core.php:105
 msgid "View events"
 msgstr "Näytä tapahtumat"
 
-#: ../core.php:57
+#: ../core.php:106
 msgid "View event"
 msgstr "Näytä tapahtuma"
 
-#: ../core.php:58
+#: ../core.php:107
 msgid "Search events"
 msgstr "Etsi tapahtumia"
 
-#: ../core.php:59
+#: ../core.php:108
 msgid "No events found"
 msgstr "Ei tapahtumia"
 
-#: ../core.php:60
+#: ../core.php:109
 msgid "No events found in Trash"
 msgstr "Ei tapahtumia roskakorissa"
 
-#: ../core.php:62
+#: ../core.php:111
 msgid "Events"
 msgstr "Tapahtumat"
 
-#: ../core.php:81 ../core.php:91
+#: ../core.php:130 ../core.php:140
 msgid "Event categories"
 msgstr "Kategoriat"
 
-#: ../core.php:83
+#: ../core.php:132
 msgid "Search event categories"
 msgstr "Etsi kategorioita"
 
-#: ../core.php:84
+#: ../core.php:133
 msgid "All event categories"
 msgstr "Kaikki kategoriat"
 
-#: ../core.php:85
+#: ../core.php:134
 msgid "Parent event category"
 msgstr "Yläkategoria"
 
-#: ../core.php:86
+#: ../core.php:135
 msgid "Parent event category:"
 msgstr ""
 
-#: ../core.php:87
+#: ../core.php:136
 msgid "Edit event category"
 msgstr "Muokkaa kategoriaa"
 
-#: ../core.php:88
+#: ../core.php:137
 msgid "Update event category"
 msgstr "Päivitä kategoria"
 
-#: ../core.php:89
+#: ../core.php:138
 msgid "Add new event category"
 msgstr "Lisää uusi kategoria"
 
-#: ../core.php:90
+#: ../core.php:139
 msgid "New event name"
 msgstr ""
 
-#: ../core.php:103
+#: ../core.php:152
 msgid "Uncategorized event"
 msgstr "Luokittelematon tapahtuma"
 
