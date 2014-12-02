@@ -50,7 +50,7 @@ class WorkerHostCore
     function add_new_events_columns($columns)
     {
         $columns = array(
-            //'cb' => '<input type="checkbox" />',
+            'cb' => '<input type="checkbox" />',
             'title'    => __('Event', 'event-worker-translations'),
             'event_status' => ucfirst(__('status', 'event-worker-translations')),
             'event_duration'    => ucfirst(__('duration', 'event-worker-translations')),

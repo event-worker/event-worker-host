@@ -29,11 +29,11 @@ class WorkerHostMain
     {
         require_once('lib/core.php');
 
-        if (!class_exists('\\Slim\\Slim'))
-        {
+        //if (!class_exists('\\Slim\\Slim'))
+        //{
             require_once('lib/api/slim-helper.php');
             require_once('lib/api/api-routes.php');
-        }
+        //}
 
         require_once('lib/loaders/scripts-and-styles-loader.php');
         require_once('lib/loaders/page-template-loader.php');
