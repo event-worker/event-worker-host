@@ -67,10 +67,12 @@ class WorkerHostCore
      *
      */
     function manage_events_columns($column, $post_id)
-    {
+    {   
+        $var = get_post_meta($post_id);
+
         if ($column == "event_status")
         {
-            if (get_post_meta($post_id, 'event_status')[0] == "http://schema.org/EventCancelled")
+            if ($var['event_status'][0] == "http://schema.org/EventCancelled")
             {
                 $status = '<font color="red">' . strtoupper(__('cancelled', 'event-worker-translations')) . '</font>' ;
                 echo $status;
@@ -83,7 +85,7 @@ class WorkerHostCore
         }
         if ($column == "event_duration")
         {
-            echo get_post_meta($post_id, 'event_start_date')[0] . '<br>' . get_post_meta($post_id, 'event_end_date')[0];
+            echo $var['event_start_date'][0] . '<br>' . $var['event_end_date'][0];
         }
     }
 

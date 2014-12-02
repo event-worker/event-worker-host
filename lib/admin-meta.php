@@ -12,6 +12,8 @@
  */
 class WorkerHostAdminMetaBoxes
 {
+    public $e_data;
+
     /**
      * The constructor.
      *
@@ -21,6 +23,11 @@ class WorkerHostAdminMetaBoxes
         add_action('save_post', array($this,'custom_save'));
         add_action('add_meta_boxes', array($this, 'add_my_meta_boxes'));
     }
+    
+    function get_the_event_meta()
+    {
+        $this->e_data = get_post_meta(get_the_ID());
+    }    
 
     /**
      * Add the fields.
@@ -28,6 +35,8 @@ class WorkerHostAdminMetaBoxes
      */
     function add_my_meta_boxes()
     {
+        $this->get_the_event_meta();
+
         add_meta_box('organizer-meta-box', ucfirst(__( 'organizer', 'event-worker-translations' )), array($this, 'show_organizer_meta_box'), 'events', 'normal', 'high');
         add_meta_box('website-meta-box', ucfirst(__( 'website', 'event-worker-translations' )), array($this, 'show_website_meta_box'), 'events', 'normal', 'high');
         add_meta_box('price-meta-box', ucfirst(__( 'price', 'event-worker-translations' )), array($this, 'show_price_meta_box'), 'events', 'normal', 'high');
@@ -50,8 +59,8 @@ class WorkerHostAdminMetaBoxes
 
         if ($count !== 0)
         {
-            $l =  get_post_meta(get_the_ID(), 'event_location')[0];
-            $n =  get_post_meta(get_the_ID(), 'event_location_name')[0];
+            $l =  $this->e_data['event_location'][0];
+            $n =  $this->e_data['event_location_name'][0];
         }
         else
         {
@@ -105,10 +114,10 @@ class WorkerHostAdminMetaBoxes
 
         if ($count !== 0 or $count2 !== 0)
         {
-            $temp_one = get_post_meta(get_the_ID(), 'event_start_date')[0];
+            $temp_one = $this->e_data['event_start_date'][0];
             $start = $this->explode_the_date($temp_one);
 
-            $temp_two = get_post_meta(get_the_ID(), 'event_end_date')[0];
+            $temp_two = $this->e_data['event_end_date'][0];
             $end = $this->explode_the_date($temp_two);
         }
         else
@@ -124,7 +133,7 @@ class WorkerHostAdminMetaBoxes
 
         if ($count3 != 0)
         {
-            $options = get_post_meta(get_the_ID(), 'event_status')[0];
+            $options = $this->e_data['event_status'][0];
 
             if ($options === "http://schema.org/EventCancelled")
             {
@@ -164,7 +173,7 @@ class WorkerHostAdminMetaBoxes
 
         if ($count !== 0)
         {
-            $price = get_post_meta(get_the_ID(), 'event_price')[0];
+            $price = $this->e_data['event_price'][0];
         }
         else
         {
@@ -188,7 +197,7 @@ class WorkerHostAdminMetaBoxes
 
         if ($count !== 0)
         {
-            $website = get_post_meta(get_the_ID(), 'event_website')[0];
+            $website = $this->e_data['event_website'][0];
         }
         else
         {
@@ -213,11 +222,15 @@ class WorkerHostAdminMetaBoxes
 
         if ($count !== 0)
         {
-            $organizer = get_post_meta(get_the_ID(), 'event_organizer')[0];
-            $organizer_address = get_post_meta(get_the_ID(), 'event_organizer_data')[0]['address'];
-            $organizer_phone = get_post_meta(get_the_ID(), 'event_organizer_data')[0]['phone'];
-            $organizer_email = get_post_meta(get_the_ID(), 'event_organizer_data')[0]['email'];
-            $organizer_website = get_post_meta(get_the_ID(), 'event_organizer_data')[0]['website'];
+            $organizer = $this->e_data['event_organizer'][0];
+
+            $odata = $this->e_data['event_organizer_data'];
+            $odata = unserialize($odata[0]);
+
+            $organizer_address = $odata['address'];
+            $organizer_phone = $odata['phone'];
+            $organizer_email = $odata['email'];
+            $organizer_website = $odata['website'];
         }
         else
         {

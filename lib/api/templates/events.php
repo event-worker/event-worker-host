@@ -136,9 +136,10 @@ function get_events()
 
     foreach ($posts as $post)
     {
-        $compare =  get_post_meta($post->ID, 'event_end_order')[0];
 
-        if ($compare < parse_the_time())
+        $compare =  get_post_meta($post->ID, 'event_end_order');
+
+        if ($compare[0] < parse_the_time())
         {
             $post = array('ID' => $post->ID, 'post_status' => 'draft');
             wp_update_post($post);
